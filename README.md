@@ -83,8 +83,8 @@ Logo proje klasöründe SVG olarak yüklü
 
 MVP aşamasına getirdiğiniz (minimum viable product), aşağıdaki gereksinimlerin hepsini sağlamalıdır.
 
-- [ ] Route u "/" olan ve içinde hero alanındaki buton ile forma linklenen bir anasayfa. (button, nav bar, ya da herhangi bir link kabul edilebilir ama id'si "order-pizza" olmalı)
-- [ ] Route u "/pizza" olan bir sipariş formu
+- [ ] Route u "/" olan ve içinde hero alanındaki buton ile forma linklenen bir anasayfa. (button, nav bar, ya da herhangi bir link kabul edilebilir ama id'si "order-pizza" olmalı) _DONE (background-img ve logo.svg halley)_ 
+- [ ] Route u "/pizza" olan bir sipariş formu 
 - [ ] Id'si "pizza-form" olan bir form
 - [ ] Id'si "name-input" olan bir isim inputu. (İsim alanı tasarımda görünmüyor olabilir. Form'da notlar alanının üzerine ekleyin)
 - [ ] Id'si "malzemeler-checkbox" bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı
