@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Input, Label, Button, ButtonGroup } from "reactstrap";
 
 const FormPageContainer = styled.div`
   width: 100%;
@@ -10,25 +11,28 @@ const FormPageContainer = styled.div`
 `;
 
 const FormItself = {
-  width: "30%",
   display: "flex",
+  flexWrap: "wrap",
   flexDirection: "column",
-}
+  gap: "30px",
+  justifyContent: "center",
+  alignItems: "flex-start",
+  width: "30%",
+};
 
 const FormElements = {
   display: "flex",
   justifyContent: "flex-start",
-  width: "30%",
-  gap: "150%",
+  width: "100%",
+  gap: "100px",
 };
 
-
 const PizzaName = {
-display: "flex",
+  display: "flex",
   justifyContent: "flex-start",
   width: "30%",
-  gap: "50%"
-}
+  gap: "50%",
+};
 
 const requiredIndicator = {
   color: "red",
@@ -47,7 +51,7 @@ const checkboxLabels = [
   "Ananas",
   "Salam",
   "Biber",
-  "Kapya Biber",
+  "Kapya",
   "Mantar",
   "Sosis",
   "Kabak",
@@ -55,19 +59,20 @@ const checkboxLabels = [
   "Domates",
   "Soğan",
   "Mısır",
+  "Tavuk",
 ];
 
-const checkboxContainerStyle = {
+const checkBoxContainer = {
   display: "flex",
   flexWrap: "wrap",
-  flexDirection: "row",
-  justifyContent: "space-between",
-  alignItems: "center",
-  marginTop: "15px",
+  width: "100%",
+  gap: "10px",
+  alignItems: "flex-end",
+  marginTop: "20px",
 };
 
-const checkboxItemStyle = {
-  margin: "10px 10px 10px 0",
+const checkboxDiv = {
+  flexBasis: "100px",
 };
 
 const OrderForm = () => {
@@ -76,8 +81,8 @@ const OrderForm = () => {
     toppings: [],
     size: "",
     extras: [],
-    fullName: "", 
-    orderNote: "", 
+    fullName: "",
+    orderNote: "",
   });
 
   const handleSizeChange = (e) => {
@@ -117,12 +122,12 @@ const OrderForm = () => {
 
   return (
     <FormPageContainer>
-      <h4 style={FormElements}>Position Absolute Acı Pizza</h4>
+      <h4 style={FormItself}>Position Absolute Acı Pizza</h4>
       <div style={PizzaName}>
         <h2>85.50₺</h2>
         <p>4.9</p>
       </div>
-      <p style={FormElements}>
+      <p style={FormItself}>
         Frontend Dev olarak hâlâ position:absolute kullanıyorsan bu çok acı
         pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer
         malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir
@@ -132,9 +137,8 @@ const OrderForm = () => {
       </p>
       <form onSubmit={handleSubmit} id="pizza-form" style={FormItself}>
         <div style={FormElements}>
-        <div id="size-radio">
+          <div id="size-radio">
             Boyut Seç:<span style={requiredIndicator}>*</span>:
-            
             <div style={radioLabelStyle}>
               <input
                 type="radio"
@@ -143,7 +147,8 @@ const OrderForm = () => {
                 onChange={handleSizeChange}
                 checked={formData.size === "small"}
                 required
-              />{" "}<label>Küçük</label>
+              />{" "}
+              <label>Küçük</label>
             </div>
             <div style={radioLabelStyle}>
               <input
@@ -153,7 +158,8 @@ const OrderForm = () => {
                 onChange={handleSizeChange}
                 checked={formData.size === "medium"}
                 required
-              />{" "}<label>Orta</label>
+              />{" "}
+              <label>Orta</label>
             </div>
             <div style={radioLabelStyle}>
               <input
@@ -163,37 +169,37 @@ const OrderForm = () => {
                 onChange={handleSizeChange}
                 checked={formData.size === "large"}
                 required
-              />{" "}<label>Büyük</label>
+              />{" "}
+              <label>Büyük</label>
             </div>
+          </div>
+          <div id="hamur-sec">
+            <label>
+              Hamur Seç:<span style={requiredIndicator}>*</span>:
+              <div style={radioLabelStyle}>
+                <select
+                  name="dough"
+                  id="dough"
+                  form="dough"
+                  value={formData.size}
+                >
+                  <option value="default">Hamur Kalınlığı</option>
+                  <option value="thin">İnce</option>
+                  <option value="half-thick">Orta</option>
+                  <option value="thick">Kalın</option>
+                </select>
+              </div>
+            </label>
+          </div>
         </div>
-        <div id="hamur-sec">
-          <label>
-            Hamur Seç:<span style={requiredIndicator}>*</span>:
-            <div style={radioLabelStyle}>
-              <select
-                name="dough"
-                id="dough"
-                form="dough"
-                value={formData.size}
-              >
-                <option value="default">
-                  Hamur Kalınlığı
-                </option>
-                <option value="thin">İnce</option>
-                <option value="half-thick">Orta</option>
-                <option value="thick">Kalın</option>
-              </select>
-            </div>
-          </label>
-        </div>
-        </div>
-        <div>
-        <div style={checkboxContainerStyle}>
+
+        <div style={checkBoxContainer}>
           <label>
             Ek Malzemeler:
-            <div style={checkboxContainerStyle}>
+            <p style={FormItself}>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
+            <div style={checkBoxContainer}>
               {checkboxLabels.map((label, index) => (
-                <div key={index} style={checkboxItemStyle}>
+                <div key={index} style={checkboxDiv}>
                   <input
                     type="checkbox"
                     name={`extra-${index}`}
@@ -207,33 +213,45 @@ const OrderForm = () => {
             </div>
           </label>
         </div>
-        </div>
+
         <div>
-        <label> İsim Soyisim:<span style={requiredIndicator}>*</span>:
-          </label>
-        <div>
-            <input
+          <Label for="customerName">İsminizi Giriniz</Label>
+          <span style={requiredIndicator}>*</span>:
+          <div>
+            <Input
+              id="name-input"
+              name="text"
+              placeholder="İsim Soyisim"
               type="text"
-              name="fullName"
               value={formData.fullName}
               onChange={handleInputChange}
               required
+              style={{ width: "100%", marginTop: "10px", padding: "10px" }}
             />
-        </div>
+          </div>
         </div>
         <div>
-        <div style={FormElements}>
-          <label>
-            Sipariş Notu:
-          </label>
-          <input
+          <Label for="order-note">Sipariş Notu:</Label>
+          <div>
+            <Input
               type="text"
               name="orderNote"
               value={formData.orderNote}
               onChange={handleInputChange}
+              placeholder="Siparişine eklemek istediğin bir not var mı?"
+              style={{ width: "100%", marginTop: "10px", padding: "10px" }}
             />
-        </div>
-        </div>
+          </div>
+          </div>
+          <hr></hr>
+          <div>
+            <ButtonGroup>
+              <Button color="danger">Left</Button>
+              <Button color="warning">Middle</Button>
+              <Button color="success">Right</Button>
+            </ButtonGroup>
+          </div>
+        
       </form>
     </FormPageContainer>
   );
