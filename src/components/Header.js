@@ -18,7 +18,7 @@ const HeaderT = styled.header`
 `;
 
 const Logo = styled.img`
-  width: 35%;
+  width: 25%;
   margin-top: auto;
 `;
 
