@@ -8,11 +8,10 @@ import NewPizzaForm from "../components/NewPizzaForm";
 const OrderPizza = () => {
   return (
     <>
-    <Header>
-    </Header>
+    <Header/>
     <PizzaDescription/>
-    <NewPizzaForm id='pizza-form'/>
+    <NewPizzaForm/>
     </>
-  );
+  ); 
 };
 export default OrderPizza;

@@ -26,6 +26,7 @@ const App = () => {
 
     setPizzaOrderData({ formData, apiResponse });
   };
+  
   return (
     <Router>
     <Switch>
@@ -33,10 +34,10 @@ const App = () => {
       <Route path="/pizza" exact component={OrderPizza}>
       <NewPizzaForm onPizzaOrder={handlePizzaOrder} formData={formData} setFormData={setFormData} />
       </Route>
-      <Route path="/success" exact component={Success}>
+      <Route path="/success" component={Success}>
       <Success pizzaOrderData={pizzaOrderData} />
       </Route>
-      <Route path="/menu" exact component={Menu} />
+      <Route path="/menu" component={Menu} />
     </Switch>
   </Router>
   );

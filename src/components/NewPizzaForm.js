@@ -65,6 +65,13 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
     }
   };
 
+  const handleDoughChange = (e) => {
+    setFormData({
+      ...formData,
+      dough: e.target.value,
+    });
+  };
+
   const calculateTotalPrice = () => {
     const toppingsPrice = formData.selectedToppings.reduce(
       (total, topping) => total + (extras[topping] || 0),
@@ -205,11 +212,12 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
                       name="dough"
                       id="dough"
                       form="dough"
-                      value={formData.size}
+                      value={formData.dough}
+                      onChange={handleDoughChange}
                     >
                       <option value="default">Hamur Kalınlığı</option>
                       <option value="thin">İnce</option>
-                      <option value="half-thick">Orta</option>
+                      <option value="half-thick">Az Kalın</option>
                       <option value="thick">Kalın</option>
                     </select>
                   </div>
@@ -217,7 +225,7 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
               </div>
             </div>
           </div>
-          <div class="extra-toppings">
+          <div className="extra-toppings">
             <label>
               Ek Malzemeler:
               <p style={{ width: "100%" }}>

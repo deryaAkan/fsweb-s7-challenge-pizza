@@ -32,6 +32,8 @@ const NavLink = styled.a`
 
 
 export default function PizzaDescription() {
+  console.log("PizzaDescription component rendered");
+
   return (
     <Main>
       <Image src={halfPizza} alt="Half Pizza" />
