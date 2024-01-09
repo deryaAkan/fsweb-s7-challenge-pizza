@@ -85,14 +85,14 @@ MVP aşamasına getirdiğiniz (minimum viable product), aşağıdaki gereksiniml
 
 - [ ] Route u "/" olan ve içinde hero alanındaki buton ile forma linklenen bir anasayfa. (button, nav bar, ya da herhangi bir link kabul edilebilir ama id'si "order-pizza" olmalı) _DONE_
 - [ ] Route u "/pizza" olan bir sipariş formu _DONE_
-- [ ] Id'si "pizza-form" olan bir form 
-- [ ] Id'si "name-input" olan bir isim inputu. (İsim alanı tasarımda görünmüyor olabilir. Form'da notlar alanının üzerine ekleyin)
-- [ ] Id'si "malzemeler-checkbox" bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı
+- [ ] Id'si "pizza-form" olan bir form _DONE_
+- [ ] Id'si "name-input" olan bir isim inputu. (İsim alanı tasarımda görünmüyor olabilir. Form'da notlar alanının üzerine ekleyin) _DONE_
+- [ ] Id'si "malzemeler-checkbox" bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı _DONE_
 - [ ] Id'si "size-radio" olan pizza boyutunun seçilebileceği bir radio  _DONE_
 - [ ] İsim için bir doğrulama(validation) ve hata mesajı (İsim en az 2 karakter olmalıdır)
-- [ ] Özel seçimler için bir text input "special-text" id'li
-- [ ] "order-button" id'li bir "Sipariş Ver" butonu. Bu buton tıklandığında form gönderilerek girilen bilgileri içerecek bir veritabanı kaydı oluşturulacak.
-- [ ] Sipariş özeti console'a yazdırılacak.
+- [ ] Özel seçimler için bir text input "special-text" id'li _DONE_
+- [ ] "order-button" id'li bir "Sipariş Ver" butonu. _DONE_ Bu buton tıklandığında form gönderilerek girilen bilgileri içerecek bir veritabanı kaydı oluşturulacak.
+- [ ] Sipariş özeti console'a yazdırılacak. _DONE_
 
 Not - Form'un payloadu, veri **örnek olarak** şu şekilde olabilir. **Kendiniz de bu yapıyı değiştirebilirsiniz.**
 
@@ -159,7 +159,7 @@ MVP'yi bitirdikten sonra çalışmanı daha da ileri götürebilirsin. Buradaki 
 - [ ] Tasarım güncellemesi: **Sipariş** sayfasında, sipariş özetini görüntüle.
   - [ ] Axios ile API request denemelisin.
   - [ ] [https://reqres.in/api/users](https://reqres.in) veya benzeri ücretsiz bir mock api servisine, `axios` ile POST ile kendi datanızı atıp, gelen mock datayı arayüze basabilirsin.
-  - [ ] Sipariş POST edilirken bir ağ hatası olasılığı için kullanıcıya geribildirim verebilmelisin (örnek: İnternet'e bağlanılamadı)
+  - [ ] Sipariş POST edilirken bir ağ hatası olasılığı için kullanıcıya geribildirim verebilmelisin (örnek: İnternet'e bağlanılamadı) _DONE_
 - [ ] Tasarım Güncellemesi: **Anasayfa** çok daha çeşitli tasarım öğeleriyle zenginleştir.
 - [ ] Tasarım Güncellemesi: **Sipariş** Form elemanlarını (inputlar), özel renk ve tasarım diline göre güncelle
 - [ ] Cypressle daha çok test yaz

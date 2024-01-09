@@ -41,7 +41,7 @@
 }
 
 
-.name-container{
+.name-container {
     display: flex;
     flex-direction: column;
     width: 600px;
@@ -57,7 +57,6 @@
     width: 600px;
     display: flex;
     flex-wrap: wrap;
-    gap: 30px;
 }
 
 .counter-container {
@@ -65,47 +64,59 @@
     flex-grow: 1;
 }
 
-#increment-button{
-  background-color: #FDC913;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  height: 5vh;
+#increment-button {
+    background-color: #FDC913;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 5vh;
 }
 
-#decrement-button{
-  background-color: #FDC913;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  cursor: pointer;
-  border-radius: 4px;
-  height: 5vh;
+#decrement-button {
+    background-color: #FDC913;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    height: 5vh;
 }
 
-#quantity{
-background-color: #ffffff;
-  border: none;
-  color: rgb(0, 0, 0);
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  border-radius: 4px;
-  height: 5vh;
+#order-button {
+    background-color: #FDC913;
+    border: none;
+    color: rgb(0, 0, 0);
+    width: 100%;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+    height: 5vh;
+}
+
+#quantity {
+    background-color: #ffffff;
+    border: none;
+    color: rgb(0, 0, 0);
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    border-radius: 4px;
+    height: 5vh;
 }
 
 
 .submit-container {
-border: 1px solid black;
-padding: 10px;
-flex-grow: 4;
+    border: 1px solid black;
+    padding: 10px;
+    flex-grow: 4;
 }

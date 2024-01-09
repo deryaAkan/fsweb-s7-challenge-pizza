@@ -1,0 +1,33 @@
+.rootContainer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 100%
+}
+
+.home-background {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%
+}
+
+#motto{
+color: white;
+  font-size: 70px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 5% 0 2% 0 ;
+}
+
+#order-pizza{
+    display: inline-block;
+    padding: 10px 40px;
+    text-decoration: none;
+    color: black; 
+    background-color: #FDC913; 
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+    font-size: 15px;
+
+}

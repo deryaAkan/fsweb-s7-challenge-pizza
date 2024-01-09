@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 
+
 const SuccessRoot = styled.div`
 display: flex;
   flex-direction: column;
@@ -38,6 +39,7 @@ const OrderResult = styled.div`
 `;
 
 const Success = () => {
+ 
   return (
     <>
       <SuccessRoot>
@@ -50,7 +52,6 @@ const Success = () => {
             <p style={{ fontSize: "20px" }}>Position Absolute Acı Pizza</p>
           </Congrats>
           <OrderResult>
-            
           </OrderResult>
         </SuccessBackground>
       </SuccessRoot>

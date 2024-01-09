@@ -12,7 +12,6 @@ const OrderPizza = () => {
     </Header>
     <PizzaDescription/>
     <NewPizzaForm id='pizza-form'/>
-  
     </>
   );
 };

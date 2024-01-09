@@ -2,9 +2,10 @@ import React, { useState } from "react";
 import { Input, Label, Button } from "reactstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import './NewPizzaForm.css';
+import "./NewPizzaForm.css";
+import { useEffect } from "react";
+import SubmitButton from "./SubmitButton";
 
-//CHECKBOX KISMI
 const checkboxLabels = [
   "Pepperoni",
   "Sarımsak",
@@ -40,31 +41,20 @@ const extras = {
   Domates: 5,
   Soğan: 5,
   Mısır: 5,
-  Tavuk: 5
+  Tavuk: 5,
 };
-
 
 const requiredIndicator = {
   color: "red",
   marginLeft: "5px",
 };
 
-export default function NewPizzaForm() {
+export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
   const history = useHistory();
-
-  const [formData, setFormData] = useState({
-    name: "",
-    toppings: [],
-    size: "",
-    extras: [],
-    fullName: "",
-    orderNote: "",
-    selectedToppings: []
-  });
-
   const [quantity, setQuantity] = useState(1);
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
-  //+1 -1 BUTONLARININ SİPARİŞ EDİLEN PİZZA SAYISNI YAZAN FONKSİYONLAR
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -75,15 +65,12 @@ export default function NewPizzaForm() {
     }
   };
 
-
-  //TOTAL FİYATI HESAPLAYAN FONKSİYON
   const calculateTotalPrice = () => {
-    const basePrice = 85.5;
     const toppingsPrice = formData.selectedToppings.reduce(
       (total, topping) => total + (extras[topping] || 0),
       0
     );
-    return (basePrice + toppingsPrice) * quantity;
+    return (formData.price + toppingsPrice) * quantity;
   };
 
   const handleSizeChange = (e) => {
@@ -92,9 +79,6 @@ export default function NewPizzaForm() {
       size: e.target.value,
     });
   };
-
-
-  //EK MALZEMELER FONKSİYONU
   const handleExtrasChange = (e) => {
     const extra = e.target.value.toLowerCase();
   
@@ -114,29 +98,58 @@ export default function NewPizzaForm() {
       });
     }
   };
-  
+
   const handleInputChange = (e) => {
+    const { name, value } = e.target;
+
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value,
+      [name]: value,
     });
   };
+
+  useEffect(() => {
+    if (submitSuccess) {
+      console.log("Form başarıyla gönderildi!");
+    }
+  }, [submitSuccess]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (formData.fullName.length < 2) {
+    
+      alert('İsim alanına en az 2 karakter yazılmalıdır.');
+      return;
+    }
+  
     try {
-      // Axios ile API isteği yapılıyor
       const response = await axios.post(
-        "https://reqres.in/api/pizzas",
+        "https://reqres.in/api/users",
         formData
       );
+  
+      const pizzaDetails = {
+        name: formData.name,
+        price: calculateTotalPrice(),
+        extras: formData.selectedToppings.map((topping) => checkboxLabels[parseInt(topping, 10)]),
+      };
+  
+      console.log("Pizza Details:", pizzaDetails);
+      console.log("API Response:", response);
+  
+      setSubmitSuccess(true);
+      onPizzaOrder({ formData, apiResponse: response.data });
 
-      console.log("API response:", response);
-      // API'den başarılı bir şekilde veri alındığında, success sayfasına yönlendiriliyor
-      history.push("/success");
+      history.push({
+        pathname: "/success",
+        state: { formData: formData, apiResponse: response.data },
+      });
     } catch (error) {
       console.error("API request error:", error);
+      setErrorMessage(
+        "Sipariş gönderilemedi. İnternet bağlantınızı kontrol edin."
+      );
     }
   };
 
@@ -243,7 +256,7 @@ export default function NewPizzaForm() {
               />
             </div>
           </div>
-          <div className="order-note">
+          <div className="order-note" id="special-text">
             <Label for="order-note">Sipariş Notu:</Label>
             <div>
               <Input
@@ -259,22 +272,33 @@ export default function NewPizzaForm() {
           <hr style={{ width: "600px" }}></hr>
           <div className="counter-submit">
             <div className="counter-container">
-            <Button id="decrement-button" onClick={handleDecrement}>-1</Button>
-            <div id="quantity">{quantity}</div>
-            <Button id="increment-button" onClick={handleIncrement}>+1</Button>
+              <Button id="decrement-button" onClick={handleDecrement}>
+                -1
+              </Button>
+              <div id="quantity">{quantity}</div>
+              <Button id="increment-button" onClick={handleIncrement}>
+                +1
+              </Button>
             </div>
             <div className="submit-container">
               <div>
                 <p>Sipariş Toplamı</p>
-                <p>Seçimler:{(formData.selectedToppings.length * 5).toFixed(2)}₺</p>
-                <p>Toplam: {(calculateTotalPrice()+(formData.selectedToppings.length * 5)).toFixed(2)}₺</p>
+                <p>
+                  Seçimler:{(formData.selectedToppings.length * 5).toFixed(2)}₺
+                </p>
+                <p>
+                  Toplam:{" "}
+                  {(
+                    calculateTotalPrice() +
+                    formData.selectedToppings.length * 5
+                  ).toFixed(2)}
+                  ₺
+                </p>
               </div>
-              <Button 
-                color="primary"
-                tag="input"
-                type="submit"
-                value="Sipariş ver"
-              />
+              <SubmitButton/>
+              {errorMessage && (
+                <div style={{ color: "red" }}>{errorMessage}</div>
+              )}
             </div>
           </div>
         </form>
