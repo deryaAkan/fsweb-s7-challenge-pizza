@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import halfPizza from "../Assets/adv-aseets/adv-form-banner.png";
+import { NavLink } from "reactstrap";
 
 const Main = styled.div`
   background-color: #faf7f2;
@@ -24,12 +25,6 @@ const LinksContainer = styled.div`
   margin-top: 20px;
 `;
 
-const NavLink = styled.a`
-  color: #333;
-  text-decoration: none;
-  font-size: 15px;
-`;
-
 
 export default function PizzaDescription() {
   console.log("PizzaDescription component rendered");
@@ -38,13 +33,11 @@ export default function PizzaDescription() {
     <Main>
       <Image src={halfPizza} alt="Half Pizza" />
       <LinksContainer>
-        <NavLink href="/">Anasayfa</NavLink>
+        <NavLink style={{color: "black",textDecoration: "none"}} href="/">Anasayfa</NavLink>
         <span>-</span>
-        <NavLink href="/menu">Seçenekler</NavLink>
+        <NavLink style={{color: "black", textDecoration: "none"}} href="/menu">Seçenekler</NavLink>
         <span>-</span>
-        <NavLink style={{color: "#CE2829"}} href="/pizza">Sipariş Oluştur</NavLink>
-        <span>-</span>
-        <NavLink href="/success">Success</NavLink>
+        <NavLink style={{color: "#CE2829", textDecoration: "none"}} href="/pizza">Sipariş Oluştur</NavLink>
       </LinksContainer>
       <h4>Position Absolute Acı Pizza</h4>
       <h2>85,50₺</h2>

@@ -19,7 +19,7 @@ const SuccessBackground = styled.div`
   background-color: #ce2829;
   background-size: cover;
   background-position: center;
-  height: 300vh;
+  height: 150vh;
   text-align: center;
   width: 100%;
   align-items: center;
