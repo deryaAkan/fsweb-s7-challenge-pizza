@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { Input, Label, Button, ButtonGroup } from "reactstrap";
+import { Input, Label, Button} from "reactstrap";
 
 const FormPageContainer = styled.div`
   width: 100%;
@@ -122,19 +122,6 @@ const OrderForm = () => {
 
   return (
     <FormPageContainer>
-      <h4 style={FormItself}>Position Absolute Acı Pizza</h4>
-      <div style={PizzaName}>
-        <h2>85.50₺</h2>
-        <p>4.9</p>
-      </div>
-      <p style={FormItself}>
-        Frontend Dev olarak hâlâ position:absolute kullanıyorsan bu çok acı
-        pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer
-        malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir
-        fırında yüksek sıcaklıkta pişirilen, genellikle yuvarlak, düzleştirilmiş
-        mayalı buğday bazlı hamurdan oluşan İtalyan kökenli ve lezzetli bir
-        yemektir.. Küçük bir pizzaya bazen pizzetta denir.
-      </p>
       <form onSubmit={handleSubmit} id="pizza-form" style={FormItself}>
         <div style={FormElements}>
           <div id="size-radio">
@@ -196,7 +183,7 @@ const OrderForm = () => {
         <div style={checkBoxContainer}>
           <label>
             Ek Malzemeler:
-            <p style={FormItself}>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
+            <p style={{width: "100%"}}>En fazla 10 malzeme seçebilirsiniz. 5₺</p>
             <div style={checkBoxContainer}>
               {checkboxLabels.map((label, index) => (
                 <div key={index} style={checkboxDiv}>
@@ -226,7 +213,7 @@ const OrderForm = () => {
               value={formData.fullName}
               onChange={handleInputChange}
               required
-              style={{ width: "100%", marginTop: "10px", padding: "10px" }}
+              style={{ width: "250%", marginTop: "10px", padding: "10px" }}
             />
           </div>
         </div>
@@ -239,19 +226,11 @@ const OrderForm = () => {
               value={formData.orderNote}
               onChange={handleInputChange}
               placeholder="Siparişine eklemek istediğin bir not var mı?"
-              style={{ width: "100%", marginTop: "10px", padding: "10px" }}
+              style={{ width: "250%", marginTop: "10px", padding: "10px" }}
             />
           </div>
-          </div>
-          <hr></hr>
-          <div>
-            <ButtonGroup>
-              <Button color="danger">Left</Button>
-              <Button color="warning">Middle</Button>
-              <Button color="success">Right</Button>
-            </ButtonGroup>
-          </div>
-        
+        </div>
+        <Button color="primary" tag="input" type="submit" value="Submit" />
       </form>
     </FormPageContainer>
   );
