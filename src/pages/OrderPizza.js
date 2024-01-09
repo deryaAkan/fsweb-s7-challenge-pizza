@@ -1,6 +1,5 @@
 import React from "react";
 import Header from "../components/Header";
-import OrderForm from "../components/OrderForm"
 import PizzaDescription from "../components/PizzaDescription";
 import NewPizzaForm from "../components/NewPizzaForm";
 
@@ -13,6 +12,7 @@ const OrderPizza = () => {
     </Header>
     <PizzaDescription/>
     <NewPizzaForm id='pizza-form'/>
+  
     </>
   );
 };

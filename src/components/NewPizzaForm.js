@@ -1,32 +1,8 @@
 import React, { useState } from "react";
-import styled from "styled-components";
 import { Input, Label, Button } from "reactstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-
-const FormPage = styled.div`
-  width: 100%;
-  align-items: center;
-  display: flex;
-  flex-direction: column;
-`;
-
-//BOY SEÇ VE HAMUR SEÇ KISMI
-const DoughSizeAndThickness = styled.div`
-  width: 600px;
-  display: flex;
-  flex-direction: row;
-  font-size: 18px;
-`;
-
-const DoughSize = styled.div`
-  flex-grow: 1;
-  background-color: royalblue;
-`;
-const DoughThickness = styled.div`
-  flex-grow: 1;
-  background-color: crimson;
-`;
+import './NewPizzaForm.css';
 
 //CHECKBOX KISMI
 const checkboxLabels = [
@@ -48,99 +24,25 @@ const checkboxLabels = [
   "Tavuk",
 ];
 
-const ExtraToppings = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  width: 600px;
-  background-color: green;
-  gap: 10px;
-  alignitems: flex-end;
-  margintop: 20px;
-`;
-
-const Extras = {
-  display: "flex",
-  flexWrap: "wrap",
-  width: "600px",
-  backgroundColor: " green",
-  gap: "10px",
-  alignItems: "flex-end",
-  marginTop: "20px",
+const extras = {
+  Pepperoni: 5,
+  Sarimsak: 5,
+  Jambon: 5,
+  Sucuk: 5,
+  Ananas: 5,
+  Salam: 5,
+  Biber: 5,
+  Kapya: 5,
+  Mantar: 5,
+  Sosis: 5,
+  Kabak: 5,
+  Jalepeno: 5,
+  Domates: 5,
+  Soğan: 5,
+  Mısır: 5,
+  Tavuk: 5
 };
 
-const TheExtraTopping = styled.div`
-  flex-basis: 100px;
-`;
-
-//İSİM İNPUT ALANI
-
-const NameInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  background-color: purple;
-`;
-//SİPARİŞ NOTU İNPUT ALANI
-
-const OrderInput = styled.div`
-  display: flex;
-  flex-direction: column;
-  width: 600px;
-  background-color: pink;
-`;
-
-//COUNTER VE SUBMİT ALANI
-
-const CounterAndSubmit = styled.div`
-  width: 600px;
-  display: flex;
-  flex-wrap: wrap;
-  background-color: green;
-  gap: 30px;
-`;
-
-//COUNTER KISMI
-const Counter = styled.div`
-  background-color: lightblue;
-  display: flex;
-  flex-grow: 1;
-`;
-
-const IncrementButton = styled.button`
-  background-color: #4caf50;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  height: 5vh;
-`;
-
-const DecrementButton = styled.button`
-  background-color: gray;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  font-size: 16px;
-  margin: 4px 2px;
-  cursor: pointer;
-  border-radius: 4px;
-  height: 5vh;
-`;
-
-//SUBMİT KISMI
-const SubmitPart = styled.div`
-  border: 1px solid black;
-  padding: 10px;
-  flex-grow: 4;
-  height: 10vh;
-`;
 
 const requiredIndicator = {
   color: "red",
@@ -157,7 +59,32 @@ export default function NewPizzaForm() {
     extras: [],
     fullName: "",
     orderNote: "",
+    selectedToppings: []
   });
+
+  const [quantity, setQuantity] = useState(1);
+
+  //+1 -1 BUTONLARININ SİPARİŞ EDİLEN PİZZA SAYISNI YAZAN FONKSİYONLAR
+  const handleIncrement = () => {
+    setQuantity(quantity + 1);
+  };
+
+  const handleDecrement = () => {
+    if (quantity > 1) {
+      setQuantity(quantity - 1);
+    }
+  };
+
+
+  //TOTAL FİYATI HESAPLAYAN FONKSİYON
+  const calculateTotalPrice = () => {
+    const basePrice = 85.5;
+    const toppingsPrice = formData.selectedToppings.reduce(
+      (total, topping) => total + (extras[topping] || 0),
+      0
+    );
+    return (basePrice + toppingsPrice) * quantity;
+  };
 
   const handleSizeChange = (e) => {
     setFormData({
@@ -166,22 +93,28 @@ export default function NewPizzaForm() {
     });
   };
 
-  const handleExtrasChange = (e) => {
-    const extra = e.target.value;
 
+  //EK MALZEMELER FONKSİYONU
+  const handleExtrasChange = (e) => {
+    const extra = e.target.value.toLowerCase();
+  
     if (formData.extras.includes(extra)) {
       setFormData({
         ...formData,
         extras: formData.extras.filter((item) => item !== extra),
+        selectedToppings: formData.selectedToppings.filter(
+          (topping) => topping !== extra
+        ),
       });
-    } else if (4 < formData.extras.length < 10) {
+    } else if (formData.extras.length < 10) {
       setFormData({
         ...formData,
         extras: [...formData.extras, extra],
+        selectedToppings: [...formData.selectedToppings, extra],
       });
     }
   };
-
+  
   const handleInputChange = (e) => {
     setFormData({
       ...formData,
@@ -199,6 +132,7 @@ export default function NewPizzaForm() {
         formData
       );
 
+      console.log("API response:", response);
       // API'den başarılı bir şekilde veri alındığında, success sayfasına yönlendiriliyor
       history.push("/success");
     } catch (error) {
@@ -208,10 +142,10 @@ export default function NewPizzaForm() {
 
   return (
     <>
-      <FormPage>
+      <div className="form-page">
         <form onSubmit={handleSubmit} id="pizza-form">
-          <DoughSizeAndThickness>
-            <DoughSize>
+          <div className="dough">
+            <div className="dough" id="dough-size">
               <div id="size-radio">
                 Boyut Seç:<span style={requiredIndicator}>*</span>:
                 <div>
@@ -248,9 +182,9 @@ export default function NewPizzaForm() {
                   <label>Büyük</label>
                 </div>
               </div>
-            </DoughSize>
-            <DoughThickness>
-              <div id="hamur-sec">
+            </div>
+            <div className="dough" id="dough-thickness">
+              <div id="dough-thickness">
                 <label>
                   Hamur Seç:<span style={requiredIndicator}>*</span>:
                   <div>
@@ -268,17 +202,17 @@ export default function NewPizzaForm() {
                   </div>
                 </label>
               </div>
-            </DoughThickness>
-          </DoughSizeAndThickness>
-          <ExtraToppings>
+            </div>
+          </div>
+          <div class="extra-toppings">
             <label>
               Ek Malzemeler:
               <p style={{ width: "100%" }}>
                 En fazla 10 malzeme seçebilirsiniz. 5₺
               </p>
-              <div style={Extras}>
+              <div className="extra-toppings, extras">
                 {checkboxLabels.map((label, index) => (
-                  <TheExtraTopping key={index}>
+                  <div className="extra-toppings, extras" key={index}>
                     <input
                       type="checkbox"
                       name={`extra-${index}`}
@@ -287,12 +221,12 @@ export default function NewPizzaForm() {
                       checked={formData.extras.includes(`option-${index}`)}
                     />
                     <label>{label}</label>
-                  </TheExtraTopping>
+                  </div>
                 ))}
               </div>
             </label>
-          </ExtraToppings>
-          <NameInput>
+          </div>
+          <div className="name-container">
             <Label for="customerName">
               İsminizi Giriniz<span style={requiredIndicator}>*</span>:
             </Label>
@@ -305,11 +239,11 @@ export default function NewPizzaForm() {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                style={{ width: "575px", marginTop: "10px", padding: "10px" }}
+                style={{ width: "578px", marginTop: "10px", padding: "10px" }}
               />
             </div>
-          </NameInput>
-          <OrderInput>
+          </div>
+          <div className="order-note">
             <Label for="order-note">Sipariş Notu:</Label>
             <div>
               <Input
@@ -318,28 +252,33 @@ export default function NewPizzaForm() {
                 value={formData.orderNote}
                 onChange={handleInputChange}
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
-                style={{ width: "575px", marginTop: "10px", padding: "10px" }}
+                style={{ width: "578px", marginTop: "10px", padding: "10px" }}
               />
             </div>
-          </OrderInput>
+          </div>
           <hr style={{ width: "600px" }}></hr>
-          <CounterAndSubmit>
-            <Counter>
-              <DecrementButton></DecrementButton>
-              <p>1</p>
-              <IncrementButton></IncrementButton>
-            </Counter>
-            <SubmitPart>
-              <Button
+          <div className="counter-submit">
+            <div className="counter-container">
+            <Button id="decrement-button" onClick={handleDecrement}>-1</Button>
+            <div id="quantity">{quantity}</div>
+            <Button id="increment-button" onClick={handleIncrement}>+1</Button>
+            </div>
+            <div className="submit-container">
+              <div>
+                <p>Sipariş Toplamı</p>
+                <p>Seçimler:{(formData.selectedToppings.length * 5).toFixed(2)}₺</p>
+                <p>Toplam: {(calculateTotalPrice()+(formData.selectedToppings.length * 5)).toFixed(2)}₺</p>
+              </div>
+              <Button 
                 color="primary"
                 tag="input"
                 type="submit"
                 value="Sipariş ver"
               />
-            </SubmitPart>
-          </CounterAndSubmit>
+            </div>
+          </div>
         </form>
-      </FormPage>
+      </div>
     </>
   );
 }

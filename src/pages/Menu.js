@@ -5,7 +5,7 @@ const Menu = () => {
   const [orderData, setOrderData] = useState({
     pizzaType: "Position Absolute Acı Pizza",
     size: "Orta",
-    extras: ["Mantar", "Sucuk", "Ananas"],
+    extras: [],
   });
 
   const [responseData, setResponseData] = useState(null);
@@ -47,19 +47,12 @@ const Menu = () => {
         />
       </div>
       <div>
-        <label>Ekstralar (Virgülle Ayırın):</label>
+        <label>Ekstralar:</label>
         <input
           type="text"
           value={orderData.extras.join(",")}
           onChange={(e) => setOrderData({ ...orderData, extras: e.target.value.split(",") })}
-        />
-      </div>
-      <div>
-        <label>Teslimat Adresi:</label>
-        <input
-          type="text"
-          value={orderData.deliveryAddress}
-          onChange={(e) => setOrderData({ ...orderData, deliveryAddress: e.target.value })}
+          placeholder="mantar, sucuk,.."
         />
       </div>
 

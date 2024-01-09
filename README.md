@@ -170,7 +170,7 @@ MVP'yi bitirdikten sonra çalışmanı daha da ileri götürebilirsin. Buradaki 
 - Tasarımı birebir uygulamalısın.
 - Görevleri yetiştirmek için, tasarımların listelendiği sırayla ilerle.
 - Metinler ve form alanı başlıklarını kendi istediğin gibi güncelleyebilirsin. Yine de kesinlikle **renkler ve yerleşimde** değişiklik istemiyoruz.
-- Sunumdan sonra dilersen sonrasında kendi portföyüne eklemeden önce için özelleştirebilirsin.
+- Sunumdan sonra dilersen kendi portföyüne eklemeden önce için özelleştirebilirsin.
 
 | **Değerlendirme Kriteri**                                                                 | **Puan** |
 | ----------------------------------------------------------------------------------------- | -------- |
