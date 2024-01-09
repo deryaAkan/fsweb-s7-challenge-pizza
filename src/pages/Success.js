@@ -2,46 +2,58 @@ import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 
-const Root2 = styled.div`
+const SuccessRoot = styled.div`
 display: flex;
   flex-direction: column;
   text-align: center;
   width: 100%
+  background-color: #CE2829;
+  background-size: cover;
 `;
 
 const SuccessBackground = styled.div`
-display: flex;
-flex-wrap: wrap;
-background-color: #CE2829;
-background-size: cover;
-background-position: center;
-height: 80vh;
-text-align: center;
-width: 100%
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  background-color: #ce2829;
+  background-size: cover;
+  background-position: center;
+  height: 300vh;
+  text-align: center;
+  width: 100%;
+  align-items: center;
 `;
 
 const Congrats = styled.p`
-color: white;
-  font-size: 40px;
+  color: white;
+  font-size: 90px;
   width: 100%;
-  padding: 10% 0 0 0;
-  margin: 0 auto;
 `;
 
-
+const OrderResult = styled.div`
+  border: 1px solid white;
+  padding: 10px;
+  width: 200px;
+  height: 30vh;
+`;
 
 const Success = () => {
   return (
     <>
-     <Root2>
-        <Header/>
+      <SuccessRoot>
+        <Header />
         <SuccessBackground>
           <Congrats>
-            TEBRİKLER! <br/>
-            SİPARİŞİNİZ ALINDI!
+          <p style={{ fontSize: "20px", color: "#FDC913" }}>lezzetin yolda</p>
+            SİPARİŞ ALINDI
+            <hr style={{ width: "600px" }}></hr>
+            <p style={{ fontSize: "20px" }}>Position Absolute Acı Pizza</p>
           </Congrats>
+          <OrderResult>
+            
+          </OrderResult>
         </SuccessBackground>
-      </Root2>
+      </SuccessRoot>
     </>
   );
 };

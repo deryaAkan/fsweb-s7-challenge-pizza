@@ -3,10 +3,9 @@ import axios from "axios";
 
 const Menu = () => {
   const [orderData, setOrderData] = useState({
-    pizzaType: "Margherita",
-    size: "Medium",
-    extras: ["Cheese", "Mushrooms"],
-    deliveryAddress: "123 Pizza Street",
+    pizzaType: "Position Absolute Acı Pizza",
+    size: "Orta",
+    extras: ["Mantar", "Sucuk", "Ananas"],
   });
 
   const [responseData, setResponseData] = useState(null);

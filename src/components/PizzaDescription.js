@@ -40,7 +40,9 @@ export default function PizzaDescription() {
         <span>-</span>
         <NavLink href="/menu">Seçenekler</NavLink>
         <span>-</span>
-        <NavLink href="/pizza">Sipariş Oluştur</NavLink>
+        <NavLink style={{color: "#CE2829"}} href="/pizza">Sipariş Oluştur</NavLink>
+        <span>-</span>
+        <NavLink href="/success">Success</NavLink>
       </LinksContainer>
       <h4>Position Absolute Acı Pizza</h4>
       <h2>85,50₺</h2>

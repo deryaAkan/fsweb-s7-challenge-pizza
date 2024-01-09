@@ -13,7 +13,6 @@ const App = () => {
       <Route path="/pizza" exact component={OrderPizza} />
       <Route path="/success" exact component={Success} />
       <Route path="/menu" exact component={Menu} />
-      
     </Switch>
   </Router>
   );

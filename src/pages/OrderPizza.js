@@ -5,14 +5,14 @@ import PizzaDescription from "../components/PizzaDescription";
 import NewPizzaForm from "../components/NewPizzaForm";
 
 
+
 const OrderPizza = () => {
   return (
     <>
     <Header>
     </Header>
     <PizzaDescription/>
-    <NewPizzaForm/>
-    <OrderForm id='pizza-form'/> _buraya artık yeni for m gelecek_
+    <NewPizzaForm id='pizza-form'/>
     </>
   );
 };

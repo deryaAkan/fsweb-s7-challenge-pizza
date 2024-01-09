@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Input, Label, Button} from "reactstrap";
+import axios from "axios";
+import {useHistory} from 'react-router-dom';
 
 const FormPageContainer = styled.div`
   width: 100%;
@@ -76,6 +78,9 @@ const checkboxDiv = {
 };
 
 const OrderForm = () => {
+    const history = useHistory();
+
+    
   const [formData, setFormData] = useState({
     name: "",
     toppings: [],
@@ -115,10 +120,23 @@ const OrderForm = () => {
     });
   };
 
-  const handleSubmit = (e) => {
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   console.log("Form submitted:", formData);
+  // };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
+
+    try {
+      // Axios ile API isteği yapılıyor
+      const response = await axios.post("https://reqres.in/api/pizzas", formData);
+      
+      // API'den başarılı bir şekilde veri alındığında, success sayfasına yönlendiriliyor
+      history.push("/success");
+    } catch (error) {
+      console.error("API request error:", error);
+    }};
 
   return (
     <FormPageContainer>
@@ -207,7 +225,7 @@ const OrderForm = () => {
           <div>
             <Input
               id="name-input"
-              name="text"
+              name="fullName"
               placeholder="İsim Soyisim"
               type="text"
               value={formData.fullName}
