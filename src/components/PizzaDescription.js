@@ -30,6 +30,7 @@ const NavLink = styled.a`
   font-size: 15px;
 `;
 
+
 export default function PizzaDescription() {
   return (
     <Main>
@@ -37,12 +38,12 @@ export default function PizzaDescription() {
       <LinksContainer>
         <NavLink href="/">Anasayfa</NavLink>
         <span>-</span>
-        <NavLink href="/secenekler">Seçenekler</NavLink>
+        <NavLink href="/menu">Seçenekler</NavLink>
         <span>-</span>
         <NavLink href="/pizza">Sipariş Oluştur</NavLink>
       </LinksContainer>
       <h4>Position Absolute Acı Pizza</h4>
-      <h2>85.50₺</h2>
+      <h2>85,50₺</h2>
       <p style={{maxWidth: "600px"}}>
         Frontend Dev olarak hâlâ position:absolute kullanıyorsan bu çok acı
         pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer
