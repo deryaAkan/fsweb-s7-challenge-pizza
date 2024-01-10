@@ -1,34 +1,16 @@
 import React from "react";
-import styled from "styled-components";
 import LogoSvg from "../Assets/logo.svg";
+import './Header.css';
 
 
-
-const HeaderT = styled.header`
-  background-color: #CE2829;
-  background-size: cover;
-  color: white;
-  text-align: center;
-  width: 100%;
-  max-width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  height: 100px;
-`;
-
-const Logo = styled.img`
-  width: 25%;
-  margin-top: auto;
-`;
 
 function Header () {
 
     return  (
     <>
-    <HeaderT>
-    <Logo src={LogoSvg} alt="Logo" />
-    </HeaderT>
+    <header>
+    <img src={LogoSvg} alt="Logo" />
+    </header>
     </>)
 
 }

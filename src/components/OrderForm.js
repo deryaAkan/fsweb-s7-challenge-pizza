@@ -62,9 +62,10 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     fullName: "",
     orderNote: "",
     selectedToppings: [],
-    price: 85.5,
+    price: 85.50,
   });
 
+  
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -93,6 +94,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
   const handleExtrasChange = (e) => {                   //checkbox kısmı, checkboxa tıkıldatınca
     const extra = e.target.value.toLowerCase();
 
+    console.log(e.target.value);
+
     if (formData.extras.includes(extra)) {
       setFormData({
         ...formData,
@@ -102,7 +105,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
           (topping) => topping !== extra
         ),
       });
-    } else if (4 < formData.extras.length < 10) {
+
+    } else if (formData.extras.length < 10) {
       setFormData({
         ...formData,
         extras: [...formData.extras, extra],
@@ -161,6 +165,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
 
       setSubmitSuccess(true);
       handlePizzaOrder({ formData, apiResponse: response.data });
+      
 
       history.push({
         pathname: "/success",
@@ -231,9 +236,6 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                       value={formData.dough}
                       onChange={handleDoughChange}
                     >
-                      <option selected disabled>
-                        Hamur Kalınlığı
-                      </option>
                       <option value="thin" required>
                         İnce
                       </option>
@@ -258,16 +260,16 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
               <div className="extra-toppings, extras">
                 {checkboxLabels.map((label, index) => (
                   <div className="extra-toppings, extras" key={index}>
+                    <label  htmlFor={`malzemeler-checkbox-${index}`}>
                     <input
-                    id="malzemeler-checkbox"
+                    id= {`malzemeler-checkbox-${index}`}
                      data-cy={`topping-${index}`}
                       type="checkbox"
                       name={`extra-${index}`}
                       value={`option-${index}`}
-                      onChange={handleExtrasChange}
-                      checked={formData.extras.includes(`option-${index}`)}
+                      onChange={handleExtrasChange} checked={formData.extras.includes(`option-${index}`)}
                     />
-                    <label>{label}</label>
+                    {label}</label>
                   </div>
                 ))}
               </div>

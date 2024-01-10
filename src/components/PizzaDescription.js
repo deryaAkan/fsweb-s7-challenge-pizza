@@ -1,47 +1,25 @@
 import React from "react";
-import styled from "styled-components";
 import halfPizza from "../Assets/adv-aseets/adv-form-banner.png";
 import { NavLink } from "reactstrap";
-
-const Main = styled.div`
-  background-color: #faf7f2;
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-content: center;
-  flex-wrap: wrap;
-  
-`;
-
-const Image = styled.img`
-  width: 600px;
-  max-height: 80vh;
-  object-fit: contain;
-`;
-
-const LinksContainer = styled.div`
-  display: flex;
-  gap: 5px;
-  margin-top: 20px;
-`;
+import './PizzaDescription.css';
 
 
 export default function PizzaDescription() {
   console.log("PizzaDescription component rendered");
 
   return (
-    <Main>
-      <Image src={halfPizza} alt="Half Pizza" />
-      <LinksContainer>
+    <main>
+      <img src={halfPizza} alt="Half Pizza" />
+      <div className="links-container">
         <NavLink style={{color: "black",textDecoration: "none"}} href="/">Anasayfa</NavLink>
         <span>-</span>
         <NavLink style={{color: "black", textDecoration: "none"}} href="/menu">Seçenekler</NavLink>
         <span>-</span>
         <NavLink style={{color: "#CE2829", textDecoration: "none"}} href="/pizza">Sipariş Oluştur</NavLink>
-      </LinksContainer>
+      </div>
       <h4>Position Absolute Acı Pizza</h4>
       <h2>85,50₺</h2>
-      <p style={{maxWidth: "600px", color: "#5F5F5F"}}>
+      <p>
         Frontend Dev olarak hâlâ position:absolute kullanıyorsan bu çok acı
         pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer
         malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir
@@ -49,6 +27,6 @@ export default function PizzaDescription() {
         mayalı buğday bazlı hamurdan oluşan İtalyan kökenli ve lezzetli bir
         yemektir.. Küçük bir pizzaya bazen pizzetta denir.
       </p>
-    </Main>
+    </main>
   );
 }

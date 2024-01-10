@@ -1,0 +1,42 @@
+.success-main-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+
+}
+
+.background-div {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    background-color: #ce2829;
+    background-size: cover;
+    background-position: center;
+    height: 150vh;
+    text-align: center;
+    width: 100%;
+    align-items: center;
+}
+
+.congrats-div {
+    color: white;
+    font-size: 80px;
+    width: 100%;
+}
+
+.order-result {
+    border: 1px solid white;
+    padding: 10px;
+    font-family: "Roboto Condensed", "sans serif";
+    width: 200px;
+    text-align: flex-start;
+}
+
+h2, h4, h5, p {
+    color: white
+}
+
+hr{
+   width: 600px;
+}

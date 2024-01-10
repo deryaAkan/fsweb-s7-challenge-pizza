@@ -7,6 +7,7 @@ import GlobalStyle from './components/GlobalStyles';
 
 const App = () => {
   const [pizzaOrderData, setPizzaOrderData] = useState(null);
+  
 
   const handlePizzaOrder = (data) => {
     setPizzaOrderData(data);
