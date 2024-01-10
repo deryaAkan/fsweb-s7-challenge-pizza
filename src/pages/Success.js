@@ -26,18 +26,18 @@ const SuccessBackground = styled.div`
   align-items: center;
 `;
 
-const Congrats = styled.p`
+const Congrats = styled.div`
   color: white;
-  font-size: 90px;
+  font-size: 80px;
   width: 100%;
 `;
 
 const OrderResult = styled.div`
   border: 1px solid white;
   padding: 10px;
+  font-family; 'Roboto Condensed', sans serif;
   width: 200px;
-  height: 30vh;
-  margin-top: 20px;
+  text-align: flex-start;
 `;
 
 const Success = ({ pizzaOrderData }) => {
@@ -52,14 +52,17 @@ const Success = ({ pizzaOrderData }) => {
         <Header />
         <SuccessBackground>
           <Congrats>
-            <p style={{ fontSize: "20px", color: "#FDC913" }}>lezzetin yolda</p>
+            <p style={{ fontSize: "20px", color: "#FDC913", fontFamily: "cursive" }}>lezzetin yolda</p>
             SİPARİŞ ALINDI
             <hr style={{ width: "600px" }}></hr>
-            <p style={{ fontSize: "20px" }}>{pizzaOrderData.formData.name}</p>
           </Congrats>
+          <h4 style={{color: "white", fontSize: "20px"}}>{pizzaOrderData.formData.name}</h4>
             <p style={{color: "white"}}>Hamur: {pizzaOrderData.formData.dough}</p>
             <p style={{color: "white"}}>Boyut: {pizzaOrderData.formData.size}</p>
              <OrderResult>
+              <h4 style={{color: "white"}}>Sipariş Toplamı</h4>
+              <h5 style={{color: "white"}}>Seçimler {pizzaOrderData.formData.selectedToppings.length * 5}₺</h5>
+              <h5 style={{color: "white"}}>Toplam    110{pizzaOrderData.formData.price.quantity}₺ </h5>
           </OrderResult>
         </SuccessBackground>
       </SuccessRoot>

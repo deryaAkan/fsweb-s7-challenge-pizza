@@ -55,7 +55,6 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
   const [formData, setFormData] = useState({
-    
     name: "Position Absolute Acı Pizza",
     toppings: [],
     size: "",
@@ -83,6 +82,13 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     });
   };
 
+  const handleSizeChange = (e) => {
+    setFormData({
+      ...formData,
+      size: e.target.value,
+    });
+  };
+
   const calculateTotalPrice = () => {
     const toppingsPrice = formData.selectedToppings.reduce(
       (total, topping) => total + (extras[topping] || 0),
@@ -91,15 +97,10 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     return (formData.price + toppingsPrice) * quantity;
   };
 
-  const handleSizeChange = (e) => {
-    setFormData({
-      ...formData,
-      size: e.target.value,
-    });
-  };
+  
   const handleExtrasChange = (e) => {
     const extra = e.target.value.toLowerCase();
-  
+
     if (formData.extras.includes(extra)) {
       setFormData({
         ...formData,
@@ -136,25 +137,25 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     e.preventDefault();
 
     if (formData.fullName.length < 2) {
-    
-      alert('İsim alanına en az 2 karakter yazılmalıdır.');
+      alert("İsim alanına en az 2 karakter yazılmalıdır.");
       return;
     }
-  
+
     try {
       const response = await axios.post(
         "https://reqres.in/api/users",
         formData
       );
-  
+
       const pizzaDetails = {
-        name: formData.name,
-        price: calculateTotalPrice(),
+        Pizza: formData.name,
+        Fiyat: calculateTotalPrice(),
+        Size: formData.size
       };
-  
+
       console.log("Pizza Details:", pizzaDetails);
-      console.log("API Response:", response);
-  
+      console.log("API Response:", response.data);
+
       setSubmitSuccess(true);
       handlePizzaOrder({ formData, apiResponse: response.data });
 
@@ -162,6 +163,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
         pathname: "/success",
         state: { formData: formData, apiResponse: response.data },
       });
+
+
     } catch (error) {
       console.error("API request error:", error);
       setErrorMessage(
@@ -182,9 +185,9 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                   <input
                     type="radio"
                     name="size"
-                    value="small"
+                    value="S"
                     onChange={handleSizeChange}
-                    checked={formData.size === "small"}
+                    checked={formData.size === "S"}
                     required
                   />{" "}
                   <label>Küçük</label>
@@ -193,9 +196,9 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                   <input
                     type="radio"
                     name="size"
-                    value="medium"
+                    value="M"
                     onChange={handleSizeChange}
-                    checked={formData.size === "medium"}
+                    checked={formData.size === "M"}
                     required
                   />{" "}
                   <label>Orta</label>
@@ -204,9 +207,9 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                   <input
                     type="radio"
                     name="size"
-                    value="large"
+                    value="L"
                     onChange={handleSizeChange}
-                    checked={formData.size === "large"}
+                    checked={formData.size === "L"}
                     required
                   />{" "}
                   <label>Büyük</label>
@@ -225,10 +228,18 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                       value={formData.dough}
                       onChange={handleDoughChange}
                     >
-                      <option value="default" disabled>Hamur Kalınlığı</option>
-                      <option value="thin">İnce</option>
-                      <option value="half-thick">Az Kalın</option>
-                      <option value="thick">Kalın</option>
+                      <option selected disabled>
+                        Hamur Kalınlığı
+                      </option>
+                      <option value="thin" required>
+                        İnce
+                      </option>
+                      <option value="medium" required>
+                        Orta
+                      </option>
+                      <option value="thick" required>
+                        Kalın
+                      </option>
                     </select>
                   </div>
                 </label>
@@ -245,6 +256,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                 {checkboxLabels.map((label, index) => (
                   <div className="extra-toppings, extras" key={index}>
                     <input
+                     data-cy={`topping-${index}`}
                       type="checkbox"
                       name={`extra-${index}`}
                       value={`option-${index}`}
@@ -263,6 +275,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
             </Label>
             <div>
               <Input
+              data-cy="customer-name"
                 id="name-input"
                 name="fullName"
                 placeholder="İsim Soyisim"
@@ -270,7 +283,12 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                style={{ width: "578px", marginTop: "10px", padding: "10px", backgroundColor: "#FAF7F2" }}
+                style={{
+                  width: "578px",
+                  marginTop: "10px",
+                  padding: "10px",
+                  backgroundColor: "#FAF7F2",
+                }}
               />
             </div>
           </div>
@@ -283,7 +301,12 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                 value={formData.orderNote}
                 onChange={handleInputChange}
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
-                style={{ width: "578px", marginTop: "10px", padding: "10px", backgroundColor: "#FAF7F2"}}
+                style={{
+                  width: "578px",
+                  marginTop: "10px",
+                  padding: "10px",
+                  backgroundColor: "#FAF7F2",
+                }}
               />
             </div>
           </div>
@@ -313,7 +336,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                   ₺
                 </p>
               </div>
-              <SubmitButton onClick={handleSubmit} />
+              <SubmitButton  onClick={handleSubmit} />
               {errorMessage && (
                 <div style={{ color: "red" }}>{errorMessage}</div>
               )}

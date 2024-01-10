@@ -10,6 +10,7 @@ export default function SubmitButton() {
                 tag="input"
                 type="submit"
                 value="Sipariş ver"
+                data-cy="form-submit-button"
               />
     </>
 }
