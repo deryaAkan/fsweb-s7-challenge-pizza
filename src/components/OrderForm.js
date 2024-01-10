@@ -52,9 +52,9 @@ const requiredIndicator = {
 export default function NewPizzaForm({ handlePizzaOrder }) {
   const history = useHistory();
   const [quantity, setQuantity] = useState(1);
-  const [submitSuccess, setSubmitSuccess] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
-  const [formData, setFormData] = useState({
+  const [submitSuccess, setSubmitSuccess] = useState(false); //useEffectte  ve handleSubmitte
+  const [errorMessage, setErrorMessage] = useState(""); // handleSubmit -> API request kısmında
+  const [formData, setFormData] = useState({ 
     name: "Position Absolute Acı Pizza",
     toppings: [],
     size: "",
@@ -89,27 +89,20 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     });
   };
 
-  const calculateTotalPrice = () => {
-    const toppingsPrice = formData.selectedToppings.reduce(
-      (total, topping) => total + (extras[topping] || 0),
-      0
-    );
-    return (formData.price + toppingsPrice) * quantity;
-  };
-
   
-  const handleExtrasChange = (e) => {
+  const handleExtrasChange = (e) => {                   //checkbox kısmı, checkboxa tıkıldatınca
     const extra = e.target.value.toLowerCase();
 
     if (formData.extras.includes(extra)) {
       setFormData({
         ...formData,
         extras: formData.extras.filter((item) => item !== extra),
+
         selectedToppings: formData.selectedToppings.filter(
           (topping) => topping !== extra
         ),
       });
-    } else if (formData.extras.length < 10) {
+    } else if (4 < formData.extras.length < 10) {
       setFormData({
         ...formData,
         extras: [...formData.extras, extra],
@@ -118,7 +111,17 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     }
   };
 
-  const handleInputChange = (e) => {
+
+  const calculateTotalPrice = () => {
+    const toppingsPrice = formData.selectedToppings.reduce(
+      (total, topping) => total + (extras[topping] || 0),
+      0
+    );
+
+    return (formData.price + toppingsPrice) * quantity;
+  };
+
+  const handleInputChange = (e) => {        //isim input alanı
     const { name, value } = e.target;
 
     setFormData({
@@ -248,8 +251,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
           </div>
           <div className="extra-toppings">
             <label>
-              Ek Malzemeler:
-              <p style={{ width: "100%" }}>
+              <h4>Ek Malzemeler:</h4>
+              <p style={{ width: "100%", color: "#5F5F5F" }}>
                 En fazla 10 malzeme seçebilirsiniz. 5₺
               </p>
               <div className="extra-toppings, extras">
