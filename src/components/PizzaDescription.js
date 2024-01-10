@@ -19,7 +19,7 @@ export default function PizzaDescription() {
       </div>
       <h4>Position Absolute Acı Pizza</h4>
       <h2>85,50₺</h2>
-      <p>
+      <p id="pizzaDesc">
         Frontend Dev olarak hâlâ position:absolute kullanıyorsan bu çok acı
         pizza tam sana göre. Pizza, domates, peynir ve genellikle çeşitli diğer
         malzemelerle kaplanmış, daha sonra geleneksel olarak odun ateşinde bir

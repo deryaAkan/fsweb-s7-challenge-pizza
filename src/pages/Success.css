@@ -33,7 +33,7 @@
     text-align: flex-start;
 }
 
-h2, h4, h5, p {
+.background-div > h4, h5 {
     color: white
 }
 
