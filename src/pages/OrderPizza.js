@@ -1,5 +1,3 @@
-// OrderPizza.js
-
 import React from "react";
 import Header from "../components/Header";
 import PizzaDescription from "../components/PizzaDescription";

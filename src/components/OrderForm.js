@@ -256,6 +256,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                 {checkboxLabels.map((label, index) => (
                   <div className="extra-toppings, extras" key={index}>
                     <input
+                    id="malzemeler-checkbox"
                      data-cy={`topping-${index}`}
                       type="checkbox"
                       name={`extra-${index}`}
