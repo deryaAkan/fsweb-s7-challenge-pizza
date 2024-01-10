@@ -1,14 +1,15 @@
+// Success.js
+
 import React from "react";
 import Header from "../components/Header";
 import styled from "styled-components";
 
-
 const SuccessRoot = styled.div`
-display: flex;
+  display: flex;
   flex-direction: column;
   text-align: center;
-  width: 100%
-  background-color: #CE2829;
+  width: 100%;
+  background-color: #ce2829;
   background-size: cover;
 `;
 
@@ -36,26 +37,34 @@ const OrderResult = styled.div`
   padding: 10px;
   width: 200px;
   height: 30vh;
+  margin-top: 20px;
 `;
 
-const Success = () => {
- 
+const Success = ({ pizzaOrderData }) => {
+  if (!pizzaOrderData || !pizzaOrderData.formData) {
+    
+    return <p>Loading...</p>; 
+  }
+
   return (
     <>
       <SuccessRoot>
         <Header />
         <SuccessBackground>
           <Congrats>
-          <p style={{ fontSize: "20px", color: "#FDC913" }}>lezzetin yolda</p>
+            <p style={{ fontSize: "20px", color: "#FDC913" }}>lezzetin yolda</p>
             SİPARİŞ ALINDI
             <hr style={{ width: "600px" }}></hr>
-            <p style={{ fontSize: "20px" }}>Position Absolute Acı Pizza</p>
+            <p style={{ fontSize: "20px" }}>{pizzaOrderData.formData.name}</p>
           </Congrats>
-          <OrderResult>
+            <p style={{color: "white"}}>Hamur: {pizzaOrderData.formData.dough}</p>
+            <p style={{color: "white"}}>Boyut: {pizzaOrderData.formData.size}</p>
+             <OrderResult>
           </OrderResult>
         </SuccessBackground>
       </SuccessRoot>
     </>
   );
 };
+
 export default Success;

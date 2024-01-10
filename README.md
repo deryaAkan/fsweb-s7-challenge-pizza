@@ -89,7 +89,7 @@ MVP aşamasına getirdiğiniz (minimum viable product), aşağıdaki gereksiniml
 - [ ] Id'si "name-input" olan bir isim inputu. (İsim alanı tasarımda görünmüyor olabilir. Form'da notlar alanının üzerine ekleyin) _DONE_
 - [ ] Id'si "malzemeler-checkbox" bir çoklu seçim - en az 4 adet ve en fazla 10 adet seçim yapılmalı _DONE_
 - [ ] Id'si "size-radio" olan pizza boyutunun seçilebileceği bir radio  _DONE_
-- [ ] İsim için bir doğrulama(validation) ve hata mesajı (İsim en az 2 karakter olmalıdır)
+- [ ] İsim için bir doğrulama(validation) ve hata mesajı (İsim en az 2 karakter olmalıdır) _DONE_
 - [ ] Özel seçimler için bir text input "special-text" id'li _DONE_
 - [ ] "order-button" id'li bir "Sipariş Ver" butonu. _DONE_ Bu buton tıklandığında form gönderilerek girilen bilgileri içerecek bir veritabanı kaydı oluşturulacak.
 - [ ] Sipariş özeti console'a yazdırılacak. _DONE_

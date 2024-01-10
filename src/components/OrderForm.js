@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Input, Label, Button } from "reactstrap";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
-import "./NewPizzaForm.css";
+import "./OrderForm.css";
 import { useEffect } from "react";
 import SubmitButton from "./SubmitButton";
 
@@ -49,11 +49,22 @@ const requiredIndicator = {
   marginLeft: "5px",
 };
 
-export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
+export default function NewPizzaForm({ handlePizzaOrder }) {
   const history = useHistory();
   const [quantity, setQuantity] = useState(1);
   const [submitSuccess, setSubmitSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState("");
+  const [formData, setFormData] = useState({
+    
+    name: "Position Absolute Acı Pizza",
+    toppings: [],
+    size: "",
+    extras: [],
+    fullName: "",
+    orderNote: "",
+    selectedToppings: [],
+    price: 85.5,
+  });
 
   const handleIncrement = () => {
     setQuantity(quantity + 1);
@@ -139,14 +150,13 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
       const pizzaDetails = {
         name: formData.name,
         price: calculateTotalPrice(),
-        extras: formData.selectedToppings.map((topping) => checkboxLabels[parseInt(topping, 10)]),
       };
   
       console.log("Pizza Details:", pizzaDetails);
       console.log("API Response:", response);
   
       setSubmitSuccess(true);
-      onPizzaOrder({ formData, apiResponse: response.data });
+      handlePizzaOrder({ formData, apiResponse: response.data });
 
       history.push({
         pathname: "/success",
@@ -215,7 +225,7 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
                       value={formData.dough}
                       onChange={handleDoughChange}
                     >
-                      <option value="default">Hamur Kalınlığı</option>
+                      <option value="default" disabled>Hamur Kalınlığı</option>
                       <option value="thin">İnce</option>
                       <option value="half-thick">Az Kalın</option>
                       <option value="thick">Kalın</option>
@@ -260,7 +270,7 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                style={{ width: "578px", marginTop: "10px", padding: "10px" }}
+                style={{ width: "578px", marginTop: "10px", padding: "10px", backgroundColor: "#FAF7F2" }}
               />
             </div>
           </div>
@@ -273,7 +283,7 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
                 value={formData.orderNote}
                 onChange={handleInputChange}
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
-                style={{ width: "578px", marginTop: "10px", padding: "10px" }}
+                style={{ width: "578px", marginTop: "10px", padding: "10px", backgroundColor: "#FAF7F2"}}
               />
             </div>
           </div>
@@ -303,7 +313,7 @@ export default function NewPizzaForm({ onPizzaOrder, formData, setFormData}) {
                   ₺
                 </p>
               </div>
-              <SubmitButton/>
+              <SubmitButton onClick={handleSubmit} />
               {errorMessage && (
                 <div style={{ color: "red" }}>{errorMessage}</div>
               )}

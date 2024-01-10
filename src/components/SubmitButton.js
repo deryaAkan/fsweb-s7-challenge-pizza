@@ -1,5 +1,5 @@
 import React from 'react';
-import './NewPizzaForm.css';
+import './OrderForm.css';
 import { Button } from 'reactstrap';
 
 export default function SubmitButton() {
