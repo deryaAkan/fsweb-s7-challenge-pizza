@@ -6,43 +6,24 @@ import "./OrderForm.css";
 import { useEffect } from "react";
 import SubmitButton from "./SubmitButton";
 
-const checkboxLabels = [
-  "Pepperoni",
-  "Sarımsak",
-  "Jambon",
-  "Sucuk",
-  "Ananas",
-  "Salam",
-  "Biber",
-  "Kapya",
-  "Mantar",
-  "Sosis",
-  "Kabak",
-  "Jalepeno",
-  "Domates",
-  "Soğan",
-  "Mısır",
-  "Tavuk",
+const toppingsData = [
+  { name: "Pepperoni", price: 5 },
+  { name: "Pepperoni", price: 5},
+  { name: "Sarımsak", price: 5 },
+  { name: "Jambon", price: 5 },
+  { name: "Sucuk", price: 5 },
+  { name: "Ananas", price: 5 },
+  { name: "Salam", price: 5 },
+  { name: "Biber", price: 5 },
+  { name: "Kapya", price: 5 },
+  { name: "Mantar", price: 5 },
+  { name: "Sosis", price: 5 },
+  { name: "Jalepeno", price: 5 },
+  { name: "Domates", price: 5 },
+  { name: "Soğan", price: 5 },
+  { name: "Mısır", price: 5 },
+  { name: "Kapya Biber", price: 5 },
 ];
-
-const extras = {
-  Pepperoni: 5,
-  Sarimsak: 5,
-  Jambon: 5,
-  Sucuk: 5,
-  Ananas: 5,
-  Salam: 5,
-  Biber: 5,
-  Kapya: 5,
-  Mantar: 5,
-  Sosis: 5,
-  Kabak: 5,
-  Jalepeno: 5,
-  Domates: 5,
-  Soğan: 5,
-  Mısır: 5,
-  Tavuk: 5,
-};
 
 const requiredIndicator = {
   color: "red",
@@ -52,17 +33,15 @@ const requiredIndicator = {
 export default function NewPizzaForm({ handlePizzaOrder }) {
   const history = useHistory();
   const [quantity, setQuantity] = useState(1);
-  const [submitSuccess, setSubmitSuccess] = useState(false); //useEffectte  ve handleSubmitte
-  const [errorMessage, setErrorMessage] = useState(""); // handleSubmit -> API request kısmında
+  const [submitSuccess, setSubmitSuccess] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(""); 
   const [formData, setFormData] = useState({
     name: "Position Absolute Acı Pizza",
     toppings: [],
     size: "",
-    extras: [],
     fullName: "",
     orderNote: "",
-    selectedToppings: [],
-    price: 85.5,
+    price: 85.50,
   });
 
   const handleIncrement = () => {
@@ -88,42 +67,33 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
       size: e.target.value,
     });
   };
-
   const handleExtrasChange = (e) => {
-    //checkbox kısmı, checkboxa tıkıldatınca
-    const extra = e.target.value.toLowerCase();
+    const topping = e.target.value.toLowerCase();
 
-    console.log(e.target.value);
-
-    if (formData.extras.includes(extra)) {
+    if (formData.toppings.includes(topping)) {
       setFormData({
         ...formData,
-        extras: formData.extras.filter((item) => item !== extra),
-
-        selectedToppings: formData.selectedToppings.filter(
-          (topping) => topping !== extra
-        ),
+        toppings: formData.toppings.filter((item) => item !== topping),
       });
-    } else if (formData.extras.length < 10) {
+    } else if (formData.toppings.length < 10) {
       setFormData({
         ...formData,
-        extras: [...formData.extras, extra],
-        selectedToppings: [...formData.selectedToppings, extra],
+        toppings: [...formData.toppings, topping],
       });
     }
   };
 
   const calculateTotalPrice = () => {
-    const toppingsPrice = formData.selectedToppings.reduce(
-      (total, topping) => total + (extras[topping] || 0),
-      0
-    );
+    const toppingsPrice = formData.toppings.reduce((total, topping) => {
+      const matchingTopping = toppingsData.find((t) => t.name.toLowerCase() === topping);
+      return total + (matchingTopping ? matchingTopping.price : 0);
+    }, 0);
 
     return (formData.price + toppingsPrice) * quantity;
   };
 
+
   const handleInputChange = (e) => {
-    //isim input alanı
     const { name, value } = e.target;
 
     setFormData({
@@ -178,156 +148,161 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
 
   return (
     <>
-      <div className="form-page">
-        <form onSubmit={handleSubmit} id="pizza-form">
-          <div className="dough">
-            <div className="dough" id="dough-size">
-              <div id="size-radio">
-                Boyut Seç:<span style={requiredIndicator}>*</span>:
-                <div>
-                  {["S", "M", "L"].map((size) => (
-                    <div key={size}>
-                      <input
-                        type="radio"
-                        name="size"
-                        value={size}
-                        onChange={handleSizeChange}
-                        checked={formData.size === size}
-                        required
-                      />{" "}
-                      <label>
-                        {size === "S"
-                          ? "Küçük"
-                          : size === "M"
-                          ? "Orta"
-                          : "Büyük"}
-                      </label>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-            <div className="dough" id="dough-thickness">
-              <div id="dough-thickness">
-                <label>
-                  Hamur Seç:<span style={requiredIndicator}>*</span>:
-                  <div>
-                    <select
-                      name="dough"
-                      id="dough"
-                      form="dough"
-                      value={formData.dough}
-                      onChange={handleDoughChange}
-                    >
-                      {[
-                        { value: "thin", label: "İnce" },
-                        { value: "medium", label: "Orta" },
-                        { value: "thick", label: "Kalın" },
-                      ].map((option) => (
-                        <option
-                          key={option.value}
-                          value={option.value}
-                          required
-                        >
-                          {option.label}
-                        </option>
-                      ))}
-                    </select>
-                  </div>
-                </label>
-              </div>
-            </div>
-          </div>
-          <div className="extra-toppings">
-            <label>
-              <h4>Ek Malzemeler:</h4>
-              <p style={{ width: "100%", color: "#5F5F5F" }}>
-                En fazla 10 malzeme seçebilirsiniz. 5₺
-              </p>
-              <div className="extra-toppings, extras">
-                {checkboxLabels.map((label, index) => (
-                  <div className="extra-toppings, extras" key={index}>
-                    <label htmlFor={`malzemeler-checkbox-${index}`}>
-                      <input
-                        id={`malzemeler-checkbox-${index}`}
-                        data-cy={`topping-${index}`}
-                        type="checkbox"
-                        name={`extra-${index}`}
-                        value={`option-${index}`}
-                        onChange={handleExtrasChange}
-                        checked={formData.extras.includes(`option-${index}`)}
-                      />
-                      {label}
+    <div className="form-page">
+      <form onSubmit={handleSubmit} id="pizza-form">
+        <div className="dough">
+          <div className="dough" id="dough-size">
+            <div id="size-radio">
+             Boyut Seç:<span style={requiredIndicator}>*</span>:
+              <div>
+                {["S", "M", "L"].map((size) => (
+                  <div key={size}>
+                    <input
+                      type="radio"
+                      name="size"
+                      value={size}
+                      onChange={handleSizeChange}
+                      checked={formData.size === size}
+                      required
+                    />{" "}
+                    <label>
+                      {size === "S"
+                        ? "küçük"
+                        : size === "M"
+                        ? "Orta"
+                        : "Büyük"}
                     </label>
                   </div>
                 ))}
               </div>
-            </label>
+            </div>
           </div>
-          <div className="name-container">
-            <Label for="customerName">
-              İsminizi Giriniz<span style={requiredIndicator}>*</span>:
-            </Label>
+          <div className="dough" id="dough-thickness">
+            <div id="dough-thickness">
+              <label>
+                Hamur Seç:<span style={requiredIndicator}>*</span>:
+                <div>
+                  <select
+                    name="dough"
+                    id="dough"
+                    form="dough"
+                    value={formData.dough}
+                    onChange={handleDoughChange}
+                    defaultValue=""
+                  >
+                    <option value="" disabled>
+                      Hamur Seç:
+                    </option>
+                    {[
+                      { value: "ince", label: "İnce" },
+                      { value: "orta", label: "Orta" },
+                      { value: "kalin", label: "Kalın" },
+                    ].map((option) => (
+                      <option
+                        key={option.value}
+                        value={option.value}
+                        required
+                      >
+                        {option.label}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              </label>
+            </div>
+          </div>
+        </div>
+        <div className="extra-toppings">
+          <label>
+            <h4>Ek Malzemeler</h4>
+            <p style={{ width: "100%", color: "#5F5F5F" }}>
+              En fazla 10 malzeme seçebilirsiniz. 5₺
+            </p>
+            <div className="extra-toppings extras">
+            {toppingsData.map((topping, index) => (
+    <div className={`extra-toppings extras ${index === 0 ? 'invisible' : ''}`} key={index}>
+      <label htmlFor={`topping-checkbox-${index}`}>
+        <input
+          id={`topping-checkbox-${index}`}
+          data-cy={`topping-${index}`}
+          type="checkbox"
+          name={`topping-${index}`}
+          value={topping.name.toLowerCase()} 
+          onChange={handleExtrasChange}
+          checked={formData.toppings.includes(topping.name.toLowerCase())}
+          disabled={index === 0}
+        />
+        {topping.name}
+                  </label>
+                </div>
+              ))}
+            </div>
+          </label>
+        </div>
+        <div className="name-container">
+          <Label for="customerName">
+           İsminizi giriniz<span style={requiredIndicator}>*</span>:
+          </Label>
+          <div>
+            <Input
+              data-cy="customer-name"
+              id="name-input"
+              name="fullName"
+              placeholder="İsim Soyisim"
+              type="text"
+              value={formData.fullName}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+        </div>
+        <div className="order-note" id="special-text">
+          <Label for="order-note">Sipariş Notu:</Label>
+          <div>
+            <Input
+              id="order-note"
+              type="text"
+              name="orderNote"
+              value={formData.orderNote}
+              onChange={handleInputChange}
+              placeholder="Siparişinize eklemek istediğiniz bir şey var mı?"
+            />
+          </div>
+        </div>
+        <hr></hr>
+        <div className="counter-submit">
+          <div className="counter-container">
+            <Button id="decrement-button" onClick={handleDecrement}>
+              -1
+            </Button>
+            <div id="quantity">{quantity}</div>
+            <Button id="increment-button" onClick={handleIncrement}>
+              +1
+            </Button>
+          </div>
+          <div className="submit-container">
             <div>
-              <Input
-                data-cy="customer-name"
-                id="name-input"
-                name="fullName"
-                placeholder="İsim Soyisim"
-                type="text"
-                value={formData.fullName}
-                onChange={handleInputChange}
-                required
-              />
+              <p>Sipariş Toplamı</p>
+              <p>
+                Seçimler:{(formData.toppings.length * 5).toFixed(2)}₺
+              </p>
+              <p>
+                Toplam:{" "}
+                {(
+                  calculateTotalPrice() +
+                  formData.toppings.length * 5
+                ).toFixed(2)}
+                ₺
+              </p>
             </div>
+            <SubmitButton onClick={handleSubmit} />
+            {errorMessage && (
+              <div style={{ color: "red" }}>{errorMessage}</div>
+            )}
           </div>
-          <div className="order-note" id="special-text">
-            <Label for="order-note">Sipariş Notu:</Label>
-            <div>
-              <Input
-                id="order-note"
-                type="text"
-                name="orderNote"
-                value={formData.orderNote}
-                onChange={handleInputChange}
-                placeholder="Siparişine eklemek istediğin bir not var mı?"
-              />
-            </div>
-          </div>
-          <hr></hr>
-          <div className="counter-submit">
-            <div className="counter-container">
-              <Button id="decrement-button" onClick={handleDecrement}>
-                -1
-              </Button>
-              <div id="quantity">{quantity}</div>
-              <Button id="increment-button" onClick={handleIncrement}>
-                +1
-              </Button>
-            </div>
-            <div className="submit-container">
-              <div>
-                <p>Sipariş Toplamı</p>
-                <p>
-                  Seçimler:{(formData.selectedToppings.length * 5).toFixed(2)}₺
-                </p>
-                <p>
-                  Toplam:{" "}
-                  {(
-                    calculateTotalPrice() +
-                    formData.selectedToppings.length * 5
-                  ).toFixed(2)}
-                  ₺
-                </p>
-              </div>
-              <SubmitButton onClick={handleSubmit} />
-              {errorMessage && (
-                <div style={{ color: "red" }}>{errorMessage}</div>
-              )}
-            </div>
-          </div>
-        </form>
-      </div>
-    </>
+        </div>
+      </form>
+    </div>
+  </>
   );
 }

@@ -156,9 +156,9 @@ Zamanı verimli kullanmak için aşağıdaki sırayla geliştirme yapmanı tavsi
 
 MVP'yi bitirdikten sonra çalışmanı daha da ileri götürebilirsin. Buradaki hedefler, bu modülde öğrendiklerinizin dışında şeyler de olabilir. Yine de MVP'de bitirdiğiniz yapı üzerine inşa edilecek. Kendine bunları yapmak için mutlaka zaman tanı, sınırlarını zorla ve aşağıdaki hedeflere ulaşıp ulaşamayacağına bak:
 
-- [ ] Tasarım güncellemesi: **Sipariş** sayfasında, sipariş özetini görüntüle.
-  - [ ] Axios ile API request denemelisin.
-  - [ ] [https://reqres.in/api/users](https://reqres.in) veya benzeri ücretsiz bir mock api servisine, `axios` ile POST ile kendi datanızı atıp, gelen mock datayı arayüze basabilirsin.
+- [ ] Tasarım güncellemesi: **Sipariş** sayfasında, sipariş özetini görüntüle. _DONE_
+  - [ ] Axios ile API request denemelisin. _DONE_
+  - [ ] [https://reqres.in/api/users](https://reqres.in) veya benzeri ücretsiz bir mock api servisine, `axios` ile POST ile kendi datanızı atıp, gelen mock datayı arayüze basabilirsin. _DONE_
   - [ ] Sipariş POST edilirken bir ağ hatası olasılığı için kullanıcıya geribildirim verebilmelisin (örnek: İnternet'e bağlanılamadı) _DONE_
 - [ ] Tasarım Güncellemesi: **Anasayfa** çok daha çeşitli tasarım öğeleriyle zenginleştir.
 - [ ] Tasarım Güncellemesi: **Sipariş** Form elemanlarını (inputlar), özel renk ve tasarım diline göre güncelle
