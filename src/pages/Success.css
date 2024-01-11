@@ -40,3 +40,9 @@ hr{
 #pizza-name {
     color: rgb(255, 255, 255);
 }
+
+#pizza-receipt {
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+}

@@ -1,13 +1,12 @@
 import React from "react";
 import Header from "../components/Header";
-import './Success.css';
-
+import "./Success.css";
 
 const Success = ({ pizzaOrderData }) => {
-  
-  if (!pizzaOrderData || !pizzaOrderData.formData) {
-    
-    return <p>Loading...</p>; 
+  console.log("pizzaOrderData:", pizzaOrderData);
+
+  if (!pizzaOrderData) {
+    return <p>Loading...</p>;
   }
 
   return (
@@ -16,17 +15,34 @@ const Success = ({ pizzaOrderData }) => {
         <Header />
         <div className="background-div">
           <div className="congrats-div">
-            <p style={{ fontSize: "20px", color: "#FDC913", fontFamily: "cursive" }}>lezzetin yolda</p>
+            <p
+              style={{
+                fontSize: "20px",
+                color: "#FDC913",
+                fontFamily: "cursive",
+              }}
+            >
+              lezzetin yolda
+            </p>
             <h3>SİPARİŞ ALINDI</h3>
             <hr></hr>
           </div>
-          <h4 style={{fontSize: "20px", color: "white"}}>{pizzaOrderData.formData.name}</h4>
-            <p style={{color: "white"}}>Hamur: {pizzaOrderData.formData.dough}</p>
-            <p style={{color: "white"}}>Boyut: {pizzaOrderData.formData.size}</p>
-             <div className="order-result">
-              <h4 style={{color: "white"}}>Sipariş Toplamı</h4>
-              <h5 style={{color: "white"}}>Seçimler {pizzaOrderData.formData.toppings.length * 5}₺</h5>
-              <h5 style={{color: "white"}}>Toplam {pizzaOrderData.formData.price}₺ </h5>
+          <div id="pizza-receipt">
+            <h4 style={{ fontSize: "20px", color: "white" }}>
+              {pizzaOrderData.name}
+            </h4>
+            <p style={{ color: "white" }}>Hamur: {pizzaOrderData.dough}</p>
+            <p style={{ color: "white" }}>Boyut: {pizzaOrderData.size}</p>
+            <p style={{ color: "white" }}>
+              Ek Malzemeler: {pizzaOrderData.toppings.join(", ")}
+            </p>
+          </div>
+          <div className="order-result">
+            <h4 style={{ color: "white" }}>Sipariş Toplamı</h4>
+            <h5 style={{ color: "white" }}>Seçimler ₺</h5>
+            <h5 style={{ color: "white" }}>
+              Toplam {pizzaOrderData.totalPrice}₺{" "}
+            </h5>
           </div>
         </div>
       </div>

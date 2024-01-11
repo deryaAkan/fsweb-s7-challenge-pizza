@@ -6,11 +6,13 @@ import Success from "./pages/Success";
 import GlobalStyle from './components/GlobalStyles';
 
 const App = () => {
-  const [pizzaOrderData, setPizzaOrderData] = useState(null);
+  const [pizzaOrderData, setPizzaOrderData] = useState({});
   
 
   const handlePizzaOrder = (data) => {
+    console.log("handlePizzaOrder", data)
     setPizzaOrderData(data);
+
   };
 
   return (

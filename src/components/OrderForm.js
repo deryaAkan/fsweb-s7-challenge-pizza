@@ -23,6 +23,8 @@ const toppingsData = [
   { name: "Soğan", price: 5 },
   { name: "Mısır", price: 5 },
   { name: "Kapya Biber", price: 5 },
+  { name: "Nohut", price: 5 },
+
 ];
 
 const requiredIndicator = {
@@ -116,34 +118,24 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
       return;
     }
 
-    try {
-      const response = await axios.post(
-        "https://reqres.in/api/users",
-        formData
-      );
 
-      const pizzaDetails = {
-        Pizza: formData.name,
-        Fiyat: calculateTotalPrice(),
-        Size: formData.size,
-      };
-
-      console.log("Pizza Details:", pizzaDetails);
-      console.log("API Response:", response.data);
+    axios.post("https://reqres.in/api/users",  {...formData, totalPrice: calculateTotalPrice() })
+    .then(function (response) {
+      console.log("API Response:", response);
 
       setSubmitSuccess(true);
-      handlePizzaOrder({ formData, apiResponse: response.data });
+      handlePizzaOrder(response.data);
 
-      history.push({
-        pathname: "/success",
-        state: { formData: formData, apiResponse: response.data },
-      });
-    } catch (error) {
+      history.push( "/success"
+      );
+    })
+
+    .catch(function (error) {
       console.error("API request error:", error);
       setErrorMessage(
         "Sipariş gönderilemedi. İnternet bağlantınızı kontrol edin."
       );
-    }
+    });
   };
 
   return (
