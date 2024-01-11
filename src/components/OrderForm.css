@@ -9,7 +9,7 @@
     display: flex;
     flex-direction: column;
     margin: 20px 0;
-    gap: 30px;
+    gap: 30px; 
 }
 
 .dough {
@@ -65,7 +65,7 @@
 }
 
 #increment-button {
-    background-color:#FDC913;
+    background-color:#FAF7F2;
     border: none;
     color: rgb(0, 0, 0);
     padding: 10px 20px;
@@ -78,7 +78,7 @@
 }
 
 #decrement-button {
-    background-color:#FDC913;
+    background-color:#FAF7F2;
     border: none;
     color: rgb(1, 1, 1);
     padding: 10px 20px;
@@ -93,6 +93,7 @@
 #order-button {
     background-color:#FDC913;
     border: none;
+    border-radius: 5px;
     color: rgb(0, 0, 0);
     width: 100%;
     text-align: center;
@@ -100,6 +101,7 @@
     font-size: 16px;
     cursor: pointer;
     height: 5vh;
+    width: 100%;
 }
 
 #quantity {
@@ -116,11 +118,15 @@
 
 
 .submit-container {
-    border: 1px solid black;
+    border: none;
+    border-radius: 5px;
     background-color: #FAF7F2;
     color: black;
-    padding: 10px;
     flex-grow: 4;
+}
+
+#siparisToplami{
+    padding: 18px;
 }
 
 #name-input {
@@ -128,6 +134,10 @@
     margin-top: 10px;
     padding: 10px;
     background-color: #FAF7F2;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 #order-note {
@@ -135,8 +145,139 @@
     margin-top: 10px;
     padding: 10px;
     background-color: #FAF7F2;
+    border: none;
+    height: 30px;
+    border-radius: 5px;
+    font-size: 16px;
 }
 
 .invisible {
     display: none;
   }
+
+
+  .container {
+    display: block;
+    position: relative;
+    margin-bottom: 12px;
+    padding: 13px 0 0 55px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .container input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+    height: 0;
+    width: 0;
+  }
+
+  .checkmark {
+    position: absolute;
+    border-radius: 5px;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 45px;
+    background-color: #FAF7F2;
+  }
+  
+
+  .container:hover input ~ .checkmark {
+    background-color: #fbe1c0;
+  }
+
+
+  .container input:checked ~ .checkmark {
+    background-color:#FDC913;
+  }
+
+  .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+
+  .container input:checked ~ .checkmark:after {
+    display: block;
+  }
+
+  .container .checkmark:after {
+    left: 15px;
+    top: 7px;
+    width: 10px;
+    height: 20px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  .radioButton-container{
+    display: flex;
+    gap: 25px;
+  }
+
+  .containerRB {
+    display: block;
+    position: relative;
+    padding: 12px 0 0 17px;
+    margin: 12px 0;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+
+  .containerRB input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+
+  .checkmarkRB {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 45px;
+    width: 45px;
+    background-color: #FAF7F2;
+    border-radius: 50%;
+  }
+
+
+  .containerRB:hover input ~ .checkmarkRB {
+    background-color:#fbe1c0;
+  }
+ 
+
+  .containerRB input:checked ~ .checkmarkRB {
+    background-color: #FDC913;
+  }
+
+  #checkmarkRB1:before {
+    content: "S";
+    position: relative;
+    z-index: 1
+  }
+
+  #checkmarkRB2:before {
+    content: "M";
+    position: relative;
+    z-index: 1
+  }
+
+  #checkmarkRB3:before {
+    content: "L";
+    position: relative;
+    z-index: 1
+  }
+
