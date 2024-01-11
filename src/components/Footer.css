@@ -8,35 +8,42 @@ footer {
 }
 
 .footerBackground {
-    width: 800px;
+    width: 75%;
     display: flex;
+    padding: 1rem 0;
     justify-content: space-between;
 }
 
 .footer-info {
-    background-color: aquamarine;
     display: flex;
 }
 
 
 .footer-info-logo {
-    background-color: rebeccapurple;
     display: flex;
     flex-direction: column;
 }
 
+
+
 .footer-info-logo > img {
-    width: 150px;
+    width: 100px;
+    margin: 1rem;
 }
 
 .contact-footer{
     display: flex;
+    margin: 1rem;
+}
+
+.contact-footer > p {
+    color: white;
+    margin: 0 1rem;
 }
 
 .menu-footer{
     display: flex;
     flex-direction: column;
-    background-color: #5F5F5F;
 }
 
 footer > hr {
@@ -44,13 +51,16 @@ footer > hr {
     border: 1px solid #5F5F5F;
 }
 
-.menu-footer > p{
-    margin: 0;
+.menu-footer > p, h4 {
+    margin: 7px 0;
+    color: white;
 }
 
 .footer-insta {
     display: flex;
     flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 1rem;
 }
 
 .footer-insta > p {
@@ -58,7 +68,7 @@ footer > hr {
 }
 
 .footer-insta-img {
-    width: 200px;
+    width: 250px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -67,7 +77,18 @@ footer > hr {
  }
  
  .footer-insta-img > img {
-     width: 50px;
+     width: 70px;
+ }
+
+ .copyright {
+    width: 73%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+ }
+
+ .copyright p {
+    color: white;
  }
 
 
