@@ -1,0 +1,73 @@
+footer {
+    width: 100%;
+    background-color: #292929;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.footerBackground {
+    width: 800px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.footer-info {
+    background-color: aquamarine;
+    display: flex;
+}
+
+
+.footer-info-logo {
+    background-color: rebeccapurple;
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-info-logo > img {
+    width: 150px;
+}
+
+.contact-footer{
+    display: flex;
+}
+
+.menu-footer{
+    display: flex;
+    flex-direction: column;
+    background-color: #5F5F5F;
+}
+
+footer > hr {
+    width: 100%;
+    border: 1px solid #5F5F5F;
+}
+
+.menu-footer > p{
+    margin: 0;
+}
+
+.footer-insta {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-insta > p {
+    color: white;
+}
+
+.footer-insta-img {
+    width: 200px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-start;
+    align-content: center;
+ }
+ 
+ .footer-insta-img > img {
+     width: 50px;
+ }
+
+
