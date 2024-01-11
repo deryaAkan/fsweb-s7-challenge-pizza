@@ -122,3 +122,17 @@
     padding: 10px;
     flex-grow: 4;
 }
+
+#name-input {
+    width: 578px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #FAF7F2;
+}
+
+#order-note {
+    width: 578px;
+    margin-top: 10px;
+    padding: 10px;
+    background-color: #FAF7F2;
+}

@@ -54,7 +54,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
   const [quantity, setQuantity] = useState(1);
   const [submitSuccess, setSubmitSuccess] = useState(false); //useEffectte  ve handleSubmitte
   const [errorMessage, setErrorMessage] = useState(""); // handleSubmit -> API request kısmında
-  const [formData, setFormData] = useState({ 
+  const [formData, setFormData] = useState({
     name: "Position Absolute Acı Pizza",
     toppings: [],
     size: "",
@@ -62,10 +62,9 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     fullName: "",
     orderNote: "",
     selectedToppings: [],
-    price: 85.50,
+    price: 85.5,
   });
 
-  
   const handleIncrement = () => {
     setQuantity(quantity + 1);
   };
@@ -90,8 +89,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     });
   };
 
-  
-  const handleExtrasChange = (e) => {                   //checkbox kısmı, checkboxa tıkıldatınca
+  const handleExtrasChange = (e) => {
+    //checkbox kısmı, checkboxa tıkıldatınca
     const extra = e.target.value.toLowerCase();
 
     console.log(e.target.value);
@@ -105,7 +104,6 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
           (topping) => topping !== extra
         ),
       });
-
     } else if (formData.extras.length < 10) {
       setFormData({
         ...formData,
@@ -114,7 +112,6 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
       });
     }
   };
-
 
   const calculateTotalPrice = () => {
     const toppingsPrice = formData.selectedToppings.reduce(
@@ -125,7 +122,8 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
     return (formData.price + toppingsPrice) * quantity;
   };
 
-  const handleInputChange = (e) => {        //isim input alanı
+  const handleInputChange = (e) => {
+    //isim input alanı
     const { name, value } = e.target;
 
     setFormData({
@@ -157,7 +155,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
       const pizzaDetails = {
         Pizza: formData.name,
         Fiyat: calculateTotalPrice(),
-        Size: formData.size
+        Size: formData.size,
       };
 
       console.log("Pizza Details:", pizzaDetails);
@@ -165,14 +163,11 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
 
       setSubmitSuccess(true);
       handlePizzaOrder({ formData, apiResponse: response.data });
-      
 
       history.push({
         pathname: "/success",
         state: { formData: formData, apiResponse: response.data },
       });
-
-
     } catch (error) {
       console.error("API request error:", error);
       setErrorMessage(
@@ -190,37 +185,25 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
               <div id="size-radio">
                 Boyut Seç:<span style={requiredIndicator}>*</span>:
                 <div>
-                  <input
-                    type="radio"
-                    name="size"
-                    value="S"
-                    onChange={handleSizeChange}
-                    checked={formData.size === "S"}
-                    required
-                  />{" "}
-                  <label>Küçük</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    name="size"
-                    value="M"
-                    onChange={handleSizeChange}
-                    checked={formData.size === "M"}
-                    required
-                  />{" "}
-                  <label>Orta</label>
-                </div>
-                <div>
-                  <input
-                    type="radio"
-                    name="size"
-                    value="L"
-                    onChange={handleSizeChange}
-                    checked={formData.size === "L"}
-                    required
-                  />{" "}
-                  <label>Büyük</label>
+                  {["S", "M", "L"].map((size) => (
+                    <div key={size}>
+                      <input
+                        type="radio"
+                        name="size"
+                        value={size}
+                        onChange={handleSizeChange}
+                        checked={formData.size === size}
+                        required
+                      />{" "}
+                      <label>
+                        {size === "S"
+                          ? "Küçük"
+                          : size === "M"
+                          ? "Orta"
+                          : "Büyük"}
+                      </label>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -236,15 +219,19 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                       value={formData.dough}
                       onChange={handleDoughChange}
                     >
-                      <option value="thin" required>
-                        İnce
-                      </option>
-                      <option value="medium" required>
-                        Orta
-                      </option>
-                      <option value="thick" required>
-                        Kalın
-                      </option>
+                      {[
+                        { value: "thin", label: "İnce" },
+                        { value: "medium", label: "Orta" },
+                        { value: "thick", label: "Kalın" },
+                      ].map((option) => (
+                        <option
+                          key={option.value}
+                          value={option.value}
+                          required
+                        >
+                          {option.label}
+                        </option>
+                      ))}
                     </select>
                   </div>
                 </label>
@@ -260,16 +247,18 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
               <div className="extra-toppings, extras">
                 {checkboxLabels.map((label, index) => (
                   <div className="extra-toppings, extras" key={index}>
-                    <label  htmlFor={`malzemeler-checkbox-${index}`}>
-                    <input
-                    id= {`malzemeler-checkbox-${index}`}
-                     data-cy={`topping-${index}`}
-                      type="checkbox"
-                      name={`extra-${index}`}
-                      value={`option-${index}`}
-                      onChange={handleExtrasChange} checked={formData.extras.includes(`option-${index}`)}
-                    />
-                    {label}</label>
+                    <label htmlFor={`malzemeler-checkbox-${index}`}>
+                      <input
+                        id={`malzemeler-checkbox-${index}`}
+                        data-cy={`topping-${index}`}
+                        type="checkbox"
+                        name={`extra-${index}`}
+                        value={`option-${index}`}
+                        onChange={handleExtrasChange}
+                        checked={formData.extras.includes(`option-${index}`)}
+                      />
+                      {label}
+                    </label>
                   </div>
                 ))}
               </div>
@@ -281,7 +270,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
             </Label>
             <div>
               <Input
-              data-cy="customer-name"
+                data-cy="customer-name"
                 id="name-input"
                 name="fullName"
                 placeholder="İsim Soyisim"
@@ -289,12 +278,6 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                 value={formData.fullName}
                 onChange={handleInputChange}
                 required
-                style={{
-                  width: "578px",
-                  marginTop: "10px",
-                  padding: "10px",
-                  backgroundColor: "#FAF7F2",
-                }}
               />
             </div>
           </div>
@@ -302,21 +285,16 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
             <Label for="order-note">Sipariş Notu:</Label>
             <div>
               <Input
+                id="order-note"
                 type="text"
                 name="orderNote"
                 value={formData.orderNote}
                 onChange={handleInputChange}
                 placeholder="Siparişine eklemek istediğin bir not var mı?"
-                style={{
-                  width: "578px",
-                  marginTop: "10px",
-                  padding: "10px",
-                  backgroundColor: "#FAF7F2",
-                }}
               />
             </div>
           </div>
-          <hr style={{ width: "600px" }}></hr>
+          <hr></hr>
           <div className="counter-submit">
             <div className="counter-container">
               <Button id="decrement-button" onClick={handleDecrement}>
@@ -342,7 +320,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                   ₺
                 </p>
               </div>
-              <SubmitButton  onClick={handleSubmit} />
+              <SubmitButton onClick={handleSubmit} />
               {errorMessage && (
                 <div style={{ color: "red" }}>{errorMessage}</div>
               )}
