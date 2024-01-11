@@ -9,7 +9,7 @@ function Header () {
     return  (
     <>
     <header>
-    <img src={LogoSvg} alt="Logo" />
+    <img  id="headerImg" src={LogoSvg} alt="Logo" />
     </header>
     </>)
 

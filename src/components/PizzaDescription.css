@@ -8,7 +8,7 @@ main {
     flex-wrap: wrap;
 }
 
-img {
+#pizzaDescImg {
     width: 600px;
     max-height: 80vh;
     object-fit: contain;

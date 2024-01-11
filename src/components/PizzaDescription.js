@@ -9,7 +9,7 @@ export default function PizzaDescription() {
 
   return (
     <main>
-      <img src={halfPizza} alt="Half Pizza" />
+      <img id="pizzaDescImg" src={halfPizza} alt="Half Pizza" />
       <div className="links-container">
         <NavLink style={{color: "black",textDecoration: "none"}} href="/">Anasayfa</NavLink>
         <span>-</span>

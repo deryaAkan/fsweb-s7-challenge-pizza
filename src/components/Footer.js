@@ -44,7 +44,7 @@ export default function Footer() {
                   icon={faPhoneVolume}
                   style={{ color: "#FDC913"}}
                   size="1x"
-                /><p>+90 216 123 4567</p>
+                /><p id="phone-footer">+90 216 123 4567</p>
               </div>
             </div>
             <div className="menu-footer">

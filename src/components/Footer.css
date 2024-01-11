@@ -36,7 +36,7 @@ footer {
     margin: 1rem;
 }
 
-.contact-footer > p {
+#phone-footer {
     color: white;
     margin: 0 1rem;
 }

@@ -5,6 +5,7 @@ import Header from "../components/Header";
 import mvpBanner from "../Assets/mvp-banner.png"
 import './HomePage.css';
 import Footer from "../components/Footer";
+import HomeMain from "../components/HomeMain";
 
 
 const StyledBackground = styled.div`
@@ -32,6 +33,7 @@ const HomePage = () => {
             <NavLink to="/pizza" id="order-pizza">ACIKTIM</NavLink>
           </div>
         </StyledBackground>
+        <HomeMain/>
         <Footer/>
       </div>
     </>

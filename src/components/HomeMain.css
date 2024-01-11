@@ -1,0 +1,39 @@
+section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mainDiv {
+    width: 75%;
+}
+
+.div1{
+    display: flex;
+    justify-content: space-between;
+} 
+
+#div1-1, #div1-2, #div1-3, #div1-4, #div1-5, #div1-6 {
+display: flex;
+   gap: 25px;
+   align-items: center;
+
+}
+
+#div1-1 #div1-2 #div1-3 #div1-4  #div1-5 #div1-6 > img {
+    width: 10px;
+}
+
+
+.div2 {
+    display: flex;
+}
+
+.div3 {
+    display: flex;
+    flex-direction: column;
+}
+
+.div4 {
+    display: flex;
+}
