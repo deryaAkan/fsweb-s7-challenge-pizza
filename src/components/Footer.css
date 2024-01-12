@@ -68,7 +68,7 @@ footer > hr {
 }
 
 .footer-insta-img {
-    width: 250px;
+    width: 400px;
     display: flex;
     flex-wrap: wrap;
     gap: 10px;
@@ -76,10 +76,6 @@ footer > hr {
     align-content: center;
  }
  
- .footer-insta-img > img {
-     width: 70px;
- }
-
  .copyright {
     width: 73%;
     display: flex;

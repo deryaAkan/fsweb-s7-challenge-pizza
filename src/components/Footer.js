@@ -60,12 +60,12 @@ export default function Footer() {
           <div className="footer-insta">
             <p>Instagram</p>
             <div className="footer-insta-img">
-              <img src={InstaImage1} />
-              <img src={InstaImage2} />
-              <img src={InstaImage3} />
-              <img src={InstaImage4} />
-              <img src={InstaImage5} />
-              <img src={InstaImage6} />
+              <img id="footer-insta-img " src={InstaImage1} />
+              <img id="footer-insta-img " src={InstaImage2} />
+              <img id="footer-insta-img " src={InstaImage3} />
+              <img id="footer-insta-img " src={InstaImage4} />
+              <img id="footer-insta-img " src={InstaImage5} />
+              <img id="footer-insta-img " src={InstaImage6} />
             </div>
           </div>
         </div>

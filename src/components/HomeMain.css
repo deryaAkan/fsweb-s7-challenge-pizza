@@ -1,32 +1,77 @@
 section {
     width: 100%;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    background-color: #FAF7F2;
+    align-items: center;
 }
 
 .mainDiv {
-    width: 75%;
+    width: 1000px;
+    display: flex;
+    flex-direction: column;
 }
 
-.div1{
+.div1 {
+    margin-top: 1rem;
+    width: 1000px;
     display: flex;
     justify-content: space-between;
-} 
+}
 
-#div1-1, #div1-2, #div1-3, #div1-4, #div1-5, #div1-6 {
-display: flex;
-   gap: 25px;
-   align-items: center;
+
+.div1-1{
+    display: flex;
+    gap: 25px;
+    align-items: center;
 
 }
 
-#div1-1 #div1-2 #div1-3 #div1-4  #div1-5 #div1-6 > img {
-    width: 10px;
+#div1-1{
+    width: 1px;
 }
 
 
 .div2 {
     display: flex;
+    width: 100%;
+    justify-content: space-between;
+    padding: 50px 0;
+    gap: 30px
+}
+
+.div2-1 {
+    height: 430px;
+    width: 500px;
+    background-image: url("../Assets/adv-aseets/kart-1.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+}
+
+.div2-2 {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    gap: 30px
+}
+
+.div2-2-1 {
+    height: 200px;
+    background-image: url("../Assets/adv-aseets/kart-2.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 500px;
+}
+
+.div2-2-2 {
+    height: 200px;
+    background-image: url("../Assets/adv-aseets/kart-3.png");
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    width: 500px;
 }
 
 .div3 {
@@ -35,5 +80,24 @@ display: flex;
 }
 
 .div4 {
+    width: 1000px;
     display: flex;
+    justify-content: space-between;
+   }
+
+.rounded-icons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 100px;
+    width: 180px;
+    background-color:white;
+}
+
+#rounded-icon-pizza {
+    background-color: #292929;
+}
+
+#rounded-icon-pizza > p {
+    color: rgb(255, 255, 255);
 }
