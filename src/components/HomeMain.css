@@ -87,7 +87,7 @@ section {
 
 .rounded-icons {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
     gap: 15px;
     border-radius: 100px;
     width: 180px;
@@ -100,4 +100,77 @@ section {
 
 #rounded-icon-pizza > p {
     color: rgb(255, 255, 255);
+}
+
+
+.div5 {
+    display: flex;
+    justify-content: space-between;
+    margin: 3rem 0;
+}
+.div5-1, .div5-2, .div5-3 {
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    height: 280px;
+    border-radius: 10px;
+    border: 1px solid white;
+    background-color: white;
+    align-items: center;
+    gap: 1rem;
+}
+
+#div5-img {
+    width: 200px;
+}
+
+.div5-pizza-names {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items:flex-start ;
+}
+
+.pizza-price {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+#homepage-button {
+    background-color:#ffffff;
+    border: 1px solid white;
+    border-radius: 30px;
+    padding: 0.8rem 1.5rem;
+    color:  #ce2829;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    cursor: pointer;
+
+}
+
+#card1-info{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    color: white;
+    margin: 2rem 0 0 2rem;
+}
+
+#red-coook{
+    color: #ce2829;
+}
+
+#black-npm {
+    color: black;
+}
+
+#mini-rating {
+    font-size: small;
+}
+
+#main-cursive{
+    font-family: cursive;
+    color:  #ce2829;
 }

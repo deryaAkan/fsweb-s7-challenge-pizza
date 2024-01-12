@@ -24,11 +24,11 @@ const Success = ({ pizzaOrderData }) => {
             >
               lezzetin yolda
             </p>
-            <h3>SİPARİŞ ALINDI</h3>
-            <hr></hr>
+            <h3 id="siparis-success">SİPARİŞ ALINDI</h3>
+            <hr className="congrats-div"></hr>
           </div>
           <div id="pizza-receipt">
-            <h4 style={{ fontSize: "20px", color: "white" }}>
+            <h4 style={{ fontSize: "15px", color: "white" }}>
               {pizzaOrderData.name}
             </h4>
             <p style={{ color: "white" }}>Hamur: {pizzaOrderData.dough}</p>
@@ -39,7 +39,7 @@ const Success = ({ pizzaOrderData }) => {
           </div>
           <div className="order-result">
             <h4 style={{ color: "white" }}>Sipariş Toplamı</h4>
-            <h5 style={{ color: "white" }}>Seçimler ₺</h5>
+            <h5 style={{ color: "white" }}>Seçimler 50₺</h5>
             <h5 style={{ color: "white" }}>
               Toplam {pizzaOrderData.totalPrice}₺{" "}
             </h5>

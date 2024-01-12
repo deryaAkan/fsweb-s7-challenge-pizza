@@ -217,7 +217,7 @@ export default function NewPizzaForm({ handlePizzaOrder }) {
                     }`}
                     key={index}
                   >
-                    <label htmlFor={`topping-checkbox-${index}`} class="container">
+                    <label htmlFor={`topping-checkbox-${index}`} class="containerCH">
                       <input
                         id={`topping-checkbox-${index}`}
                         data-cy={`topping-${index}`}

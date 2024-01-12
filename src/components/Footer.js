@@ -29,15 +29,15 @@ export default function Footer() {
                   style={{ color: "#FDC913" }}
                   size="1x"
                 />
-                <p>341 Londonderry Road, Istanbul Turkiye</p>
+                <p id="hot-menu">341 Londonderry Road, Istanbul Turkiye</p>
               </div>
-              <div className="contact-footer">
+              <div className="contact-footer" >
                 <FontAwesomeIcon
                   icon={faEnvelopeOpenText}
                   style={{ color: "#FDC913" }}
                   size="1x"
                 />
-                <p>aciktim@teknolojikyemekler.com</p>
+                <p id="hot-menu">aciktim@teknolojikyemekler.com</p>
               </div>
               <div className="contact-footer">
                 <FontAwesomeIcon
@@ -48,7 +48,7 @@ export default function Footer() {
               </div>
             </div>
             <div className="menu-footer">
-              <h4>Sıccacık Yemekler</h4>
+              <h5 id="hot-menu">Hot Menu</h5>
               <p>Terminal Pizza</p>
               <p>5 kişilik Hacklathon Pizza</p>
               <p>useEffect Tavuklu Pizza</p>
@@ -58,7 +58,7 @@ export default function Footer() {
             </div>
           </div>
           <div className="footer-insta">
-            <p>Instagram</p>
+            <h5>Instagram</h5>
             <div className="footer-insta-img">
               <img id="footer-insta-img " src={InstaImage1} />
               <img id="footer-insta-img " src={InstaImage2} />

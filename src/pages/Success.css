@@ -13,13 +13,16 @@
     background-color: #ce2829;
     background-size: cover;
     background-position: center;
-    height: 150vh;
+    height: 100vh;
     text-align: center;
     width: 100%;
     align-items: center;
 }
 
 .congrats-div {
+    display: flex;
+    flex-direction: column;
+  align-items: center;
     color: white;
     font-size: 80px;
     width: 100%;
@@ -33,7 +36,7 @@
     text-align: flex-start;
 }
 
-hr{
+.congrats-div > hr{
    width: 600px;
 }
 
@@ -45,4 +48,8 @@ hr{
     display: flex;
     flex-direction: column;
     width: 200px;
+}
+
+#siparis-success{
+    font-size: 60px;
 }

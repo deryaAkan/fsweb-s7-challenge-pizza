@@ -36,7 +36,7 @@
 .extras {
     display: flex;
     flex-wrap: wrap;
-    flex-basis: 150px;
+    flex-basis: 200px;
     margin: 10px 0;
 }
 
@@ -135,7 +135,7 @@
     padding: 10px;
     background-color: #FAF7F2;
     border: none;
-    height: 30px;
+    height: 50px;
     border-radius: 5px;
     font-size: 16px;
 }
@@ -146,7 +146,7 @@
     padding: 10px;
     background-color: #FAF7F2;
     border: none;
-    height: 30px;
+    height: 50px;
     border-radius: 5px;
     font-size: 16px;
 }
@@ -156,12 +156,13 @@
   }
 
 
-  .container {
-    display: block;
+  .containerCH {
+    display: flex;
     position: relative;
     margin-bottom: 12px;
-    padding: 13px 0 0 55px;
+    padding-left: 60px;
     cursor: pointer;
+    justify-content: space-between;
     font-size: 16px;
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -169,7 +170,7 @@
     user-select: none;
   }
 
-  .container input {
+  .containerCH input {
     position: absolute;
     opacity: 0;
     cursor: pointer;
@@ -188,12 +189,12 @@
   }
   
 
-  .container:hover input ~ .checkmark {
+  .containerCH:hover input ~ .checkmark {
     background-color: #fbe1c0;
   }
 
 
-  .container input:checked ~ .checkmark {
+  .containerCH input:checked ~ .checkmark {
     background-color:#FDC913;
   }
 
@@ -203,11 +204,11 @@
     display: none;
   }
 
-  .container input:checked ~ .checkmark:after {
+  .containerCH input:checked ~ .checkmark:after {
     display: block;
   }
 
-  .container .checkmark:after {
+  .containerCH .checkmark:after {
     left: 15px;
     top: 7px;
     width: 10px;
