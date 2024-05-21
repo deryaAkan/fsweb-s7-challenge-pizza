@@ -22,7 +22,7 @@ export default function Footer() {
         <div className="footerBackground">
           <div className="footer-info">
             <div className="footer-info-logo">
-              <img src={FooterLogoSvg} />
+              <img src={FooterLogoSvg} alt="" />
               <div className="contact-footer">
                 <FontAwesomeIcon
                   icon={faLocationDot}
@@ -60,12 +60,12 @@ export default function Footer() {
           <div className="footer-insta">
             <h5>Instagram</h5>
             <div className="footer-insta-img">
-              <img id="footer-insta-img " src={InstaImage1} />
-              <img id="footer-insta-img " src={InstaImage2} />
-              <img id="footer-insta-img " src={InstaImage3} />
-              <img id="footer-insta-img " src={InstaImage4} />
-              <img id="footer-insta-img " src={InstaImage5} />
-              <img id="footer-insta-img " src={InstaImage6} />
+              <img id="footer-insta-img " src={InstaImage1}alt=""/>
+              <img id="footer-insta-img " src={InstaImage2} alt=""/>
+              <img id="footer-insta-img " src={InstaImage3} alt=""/>
+              <img id="footer-insta-img " src={InstaImage4} alt=""/>
+              <img id="footer-insta-img " src={InstaImage5} alt=""/>
+              <img id="footer-insta-img " src={InstaImage6} alt=""/>
             </div>
           </div>
         </div>

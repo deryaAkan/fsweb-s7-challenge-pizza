@@ -18,27 +18,27 @@ export default function HomeMain() {
       <section>
       <div className="div1">
             <div className="div1-1">
-              <img id="div1-img" src={icon1} />
+              <img alt="" id="div1-img" src={icon1} />
               <p>YENİ! Kore</p>
             </div>
             <div className="div1-1">
-              <img src={icon2} id="div1-img" />
+              <img alt="" src={icon2} id="div1-img" />
               <p>Pizza</p>
             </div>
             <div className="div1-1" >
-              <img src={icon3} id="div1-img"/>
+              <img alt="" src={icon3} id="div1-img"/>
               <p>Burger</p>
             </div>
             <div className="div1-1">
-              <img src={icon4} id="div1-img"/>
+              <img alt="" src={icon4} id="div1-img"/>
               <p>Kızartmalar</p>
             </div>
             <div className="div1-1" >
-              <img src={icon5} id="div1-img" />
+              <img alt="" src={icon5} id="div1-img" />
               <p>Fast Food</p>
             </div>
             <div className="div1-1">
-              <img src={icon6} id="div1-img" />
+              <img alt="" src={icon6} id="div1-img" />
               <p>Gazlı İçecek</p>
             </div>
           </div>
@@ -77,33 +77,33 @@ export default function HomeMain() {
           </div>
           <div className="div4">
             <div className="rounded-icons" >
-              <img id="div1-img" src={icon1} />
+              <img alt="" id="div1-img" src={icon1} />
               <p>YENİ! Kore</p>
             </div>
             <div id="rounded-icon-pizza" className="rounded-icons" >
-              <img src={icon2} id="div1-img" />
+              <img alt="" src={icon2} id="div1-img" />
               <p>Pizza</p>
             </div>
             <div className="rounded-icons" >
-              <img src={icon3} id="div1-img"/>
+              <img alt="" src={icon3} id="div1-img" />
               <p>Burger</p>
             </div>
             <div className="rounded-icons" >
-              <img src={icon4} id="div1-img"/>
+              <img src={icon4} id="div1-img" alt=""/>
               <p>Kızartmalar</p>
             </div>
             <div className="rounded-icons" >
-              <img src={icon5} id="div1-img" />
+              <img alt="" src={icon5} id="div1-img" />
               <p>Fast Food</p>
             </div>
             <div className="rounded-icons" >
-              <img src={icon6} id="div1-img" />
+              <img alt="" src={icon6} id="div1-img" />
               <p>Gazlı İçecek</p>
             </div>
           </div>
           <div className="div5">
             <div className="div5-1">
-              <img id="div5-img" src={food1} />
+              <img alt="" id="div5-img" src={food1} />
               <div className="div5-pizza-names">
               <h6>Terminal Pizza</h6>
               <div className="pizza-price">
@@ -114,7 +114,7 @@ export default function HomeMain() {
               </div>
             </div>
             <div className="div5-2">
-            <img id="div5-img" src={food2} />
+            <img id="div5-img" src={food2} alt=""/>
             <div className="div5-pizza-names">
               <h6>Position Absolute Pizza</h6>
               <div className="pizza-price">
@@ -125,7 +125,7 @@ export default function HomeMain() {
             </div>
             </div>
             <div className="div5-2">
-            <img id="div5-img" src={food3} />
+            <img alt="" id="div5-img" src={food3} />
             <div className="div5-pizza-names">
             <h6>useEffect Tavuklu Burger</h6>
             <div className="pizza-price">
